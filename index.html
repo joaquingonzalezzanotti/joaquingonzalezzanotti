@@ -106,6 +106,39 @@
         gap: 0.9rem;
       }
 
+      .project-card-trigger {
+        cursor: pointer;
+      }
+
+      .project-card-trigger:focus-visible {
+        outline: 3px solid rgba(37, 99, 235, 0.45);
+        outline-offset: 2px;
+      }
+
+      .project-icon {
+        display: flex;
+        height: 3rem;
+        width: 3rem;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.75rem;
+      }
+
+      .project-icon[data-accent="teal"] {
+        background: #ccfbf1;
+        color: #0f766e;
+      }
+
+      .project-icon[data-accent="sky"] {
+        background: #e0f2fe;
+        color: #0369a1;
+      }
+
+      .project-icon[data-accent="indigo"] {
+        background: #e0e7ff;
+        color: #3730a3;
+      }
+
       .chip {
         display: inline-flex;
         align-items: center;
@@ -128,13 +161,178 @@
         background: rgba(255, 255, 255, 0.75);
         font-size: 1rem;
         font-weight: 700;
-        text-decoration: none;
         transition: border-color 220ms ease, transform 220ms ease, background-color 220ms ease;
+      }
+
+      .open-project[data-accent="teal"] {
+        color: #0f766e;
+      }
+
+      .open-project[data-accent="sky"] {
+        color: #0369a1;
+      }
+
+      .open-project[data-accent="indigo"] {
+        color: #3730a3;
       }
 
       .open-project:hover {
         transform: translateY(-1px);
         background: rgba(255, 255, 255, 0.98);
+      }
+
+      .modal-open {
+        overflow: hidden;
+      }
+
+      .project-dialog {
+        margin: 0;
+        padding: 0;
+        border: none;
+        background: transparent;
+        width: 100%;
+        max-width: none;
+      }
+
+      .project-dialog::backdrop {
+        background: rgba(15, 23, 42, 0.55);
+        backdrop-filter: blur(3px);
+      }
+      .project-dialog[open] {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+      }
+
+      .project-dialog-panel {
+        width: 100vw;
+        height: 100dvh;
+        overflow-y: auto;
+        background: #ffffff;
+        border-radius: 1.25rem 1.25rem 0 0;
+        box-shadow: 0 -4px 30px -18px rgba(15, 23, 42, 0.3);
+        transform: translateY(16px);
+        opacity: 0;
+        transition: transform 240ms ease, opacity 240ms ease;
+      }
+
+      .project-dialog[open] .project-dialog-panel {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .modal-close {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        border: 1px solid rgba(148, 163, 184, 0.4);
+        background: rgba(248, 250, 252, 0.95);
+        width: 2.5rem;
+        height: 2.5rem;
+        color: #0f172a;
+      }
+
+      .modal-close:focus-visible,
+      .modal-link:focus-visible,
+      .share-btn:focus-visible {
+        outline: 3px solid rgba(37, 99, 235, 0.4);
+        outline-offset: 2px;
+      }
+
+      .carousel-shell {
+        border-radius: 1rem;
+        border: 1px solid rgba(148, 163, 184, 0.24);
+        background: rgba(241, 245, 249, 0.55);
+        padding: 0.75rem;
+      }
+
+      .carousel-frame {
+        overflow: hidden;
+        border-radius: 0.8rem;
+        border: 1px solid rgba(148, 163, 184, 0.3);
+        background: #e2e8f0;
+        aspect-ratio: 16 / 9;
+      }
+
+      .carousel-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .modal-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        border-radius: 0.65rem;
+        border: 1px solid rgba(148, 163, 184, 0.4);
+        background: rgba(248, 250, 252, 0.9);
+        padding: 0.45rem 0.7rem;
+        font-weight: 600;
+        color: #1e3a8a;
+      }
+
+      .share-btn {
+        border: 1px solid rgba(30, 64, 175, 0.25);
+        border-radius: 0.75rem;
+        background: #eff6ff;
+        color: #1d4ed8;
+        font-weight: 700;
+        padding: 0.58rem 0.85rem;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      @media (min-width: 768px) {
+        .project-dialog {
+          padding: 1.2rem;
+        }
+
+        .project-dialog[open] {
+          align-items: center;
+        }
+
+        .project-dialog-panel {
+          width: min(960px, 95vw);
+          height: auto;
+          max-height: 90dvh;
+          border-radius: 1.25rem;
+          border: 1px solid rgba(148, 163, 184, 0.24);
+          transform: translateY(0) scale(0.985);
+        }
+
+        .project-dialog[open] .project-dialog-panel {
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        .fade-up {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+
+        .app-card,
+        .open-project,
+        .project-dialog-panel {
+          transition: none;
+        }
       }
     </style>
   </head>
@@ -195,55 +393,7 @@
           </a>
         </div>
 
-        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-          <article class="app-card project-card rounded-2xl p-5 sm:p-6">
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-100 text-teal-700">
-              <i data-lucide="wallet"></i>
-            </div>
-            <h3 class="text-[2rem] font-semibold tracking-tight text-slate-900">ExpenseLog</h3>
-            <p class="text-[1.05rem] text-slate-600">
-              Plataforma para registro y analisis de gastos personales con reportes simples y accionables.
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <span class="chip">Go</span>
-              <span class="chip">JavaScript</span>
-              <span class="chip">PostgreSQL</span>
-            </div>
-            <a
-              href="https://expenselog.com.ar/"
-              target="_blank"
-              rel="noreferrer"
-              class="open-project text-teal-700 transition hover:text-teal-800"
-            >
-              Abrir proyecto
-              <i data-lucide="arrow-up-right" class="h-5 w-5"></i>
-            </a>
-          </article>
-
-          <article class="app-card project-card rounded-2xl p-5 sm:p-6">
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-100 text-sky-700">
-              <i data-lucide="sparkles"></i>
-            </div>
-            <h3 class="text-[2rem] font-semibold tracking-tight text-slate-900">Sorty</h3>
-            <p class="text-[1.05rem] text-slate-600">
-              Aplicacion para organizar amigo invisible con una experiencia rapida, directa y sin friccion.
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <span class="chip">JavaScript</span>
-              <span class="chip">Python</span>
-              <span class="chip">PostgreSQL</span>
-            </div>
-            <a
-              href="https://sorty-neon.vercel.app"
-              target="_blank"
-              rel="noreferrer"
-              class="open-project text-sky-700 transition hover:text-sky-800"
-            >
-              Abrir proyecto
-              <i data-lucide="arrow-up-right" class="h-5 w-5"></i>
-            </a>
-          </article>
-        </div>
+        <div id="projects-grid" class="grid grid-cols-1 gap-4 md:grid-cols-2" aria-live="polite"></div>
       </section>
 
       <section class="fade-up flex flex-col gap-5 delay-2">
@@ -266,12 +416,11 @@
           >
         </div>
       </section>
-
       <section id="contacto" class="fade-up flex flex-col gap-5 delay-3">
         <div class="flex flex-wrap items-center justify-between gap-4">
           <h2 class="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Contacto</h2>
           <p class="text-base text-slate-600">
-            ¿Tenés un proyecto en mente? Escribime y te respondo rápido.
+            Tenes un proyecto en mente? Escribime y te respondo rapido.
           </p>
         </div>
         <form
@@ -326,6 +475,73 @@
       </section>
     </main>
 
+    <dialog
+      id="project-modal"
+      class="project-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="project-modal-title"
+      aria-describedby="project-modal-one-liner"
+    >
+      <article class="project-dialog-panel px-4 pb-8 pt-5 sm:px-6 sm:pt-6">
+        <div class="mb-5 flex items-start justify-between gap-4">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Detalle del proyecto</p>
+            <h3 id="project-modal-title" class="mt-2 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl"></h3>
+            <p id="project-modal-one-liner" class="mt-2 max-w-3xl text-[1.02rem] text-slate-600"></p>
+          </div>
+          <button id="project-modal-close" type="button" class="modal-close" aria-label="Cerrar detalle del proyecto">
+            <i data-lucide="x" class="h-5 w-5" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <section id="project-modal-image-section" class="carousel-shell" aria-label="Captura del proyecto" hidden>
+          <div class="carousel-frame">
+            <img id="project-modal-image" class="carousel-image" src="" alt="" loading="lazy" />
+          </div>
+          <p id="project-modal-image-caption" class="mt-3 text-sm text-slate-600"></p>
+        </section>
+
+        <div class="mt-6 grid gap-5 md:grid-cols-2">
+          <section class="app-card rounded-2xl p-4">
+            <h4 class="text-lg font-semibold text-slate-900">Problema</h4>
+            <p id="project-modal-problem" class="mt-2 text-slate-600"></p>
+          </section>
+          <section class="app-card rounded-2xl p-4">
+            <h4 class="text-lg font-semibold text-slate-900">Solucion</h4>
+            <p id="project-modal-solution" class="mt-2 text-slate-600"></p>
+          </section>
+        </div>
+
+        <section class="mt-6">
+          <h4 class="text-lg font-semibold text-slate-900">Caracteristicas clave</h4>
+          <ul id="project-modal-features" class="mt-2 list-disc space-y-1 pl-5 text-slate-700"></ul>
+        </section>
+
+        <section class="mt-6">
+          <h4 class="text-lg font-semibold text-slate-900">Stack tecnico</h4>
+          <div id="project-modal-tech-stack" class="mt-2 flex flex-wrap gap-2"></div>
+        </section>
+
+        <section id="project-modal-links-section" class="mt-6">
+          <h4 class="text-lg font-semibold text-slate-900">Enlaces</h4>
+          <div id="project-modal-links" class="mt-2 flex flex-wrap gap-2"></div>
+        </section>
+
+        <section class="mt-6">
+          <h4 class="text-lg font-semibold text-slate-900">Aprendizajes clave</h4>
+          <ul id="project-modal-learnings" class="mt-2 list-disc space-y-1 pl-5 text-slate-700"></ul>
+        </section>
+
+        <div class="mt-7 flex flex-wrap items-center gap-3">
+          <button id="project-modal-share" type="button" class="share-btn">
+            Copiar link para compartir
+          </button>
+          <p id="project-modal-share-status" class="text-sm text-slate-600" aria-live="polite"></p>
+        </div>
+      </article>
+    </dialog>
+
     <footer class="border-t border-slate-300/70 bg-white/45">
       <div
         class="mx-auto flex w-full max-w-5xl flex-col gap-3 px-5 py-8 text-sm text-slate-600 sm:flex-row sm:items-center sm:justify-between sm:px-6"
@@ -350,8 +566,328 @@
       </div>
     </footer>
 
-    <script>
-      lucide.createIcons();
+    <script type="module">
+      import { projects } from "./projects.js";
+
+      const projectsBySlug = new Map(projects.map((project) => [project.slug, project]));
+      const gridEl = document.getElementById("projects-grid");
+
+      const dialogEl = document.getElementById("project-modal");
+      const dialogPanelEl = dialogEl.querySelector(".project-dialog-panel");
+      const closeBtnEl = document.getElementById("project-modal-close");
+      const shareBtnEl = document.getElementById("project-modal-share");
+      const shareStatusEl = document.getElementById("project-modal-share-status");
+
+      const titleEl = document.getElementById("project-modal-title");
+      const oneLinerEl = document.getElementById("project-modal-one-liner");
+      const problemEl = document.getElementById("project-modal-problem");
+      const solutionEl = document.getElementById("project-modal-solution");
+      const featuresEl = document.getElementById("project-modal-features");
+      const techStackEl = document.getElementById("project-modal-tech-stack");
+      const linksSectionEl = document.getElementById("project-modal-links-section");
+      const linksEl = document.getElementById("project-modal-links");
+      const learningsEl = document.getElementById("project-modal-learnings");
+
+      const imageSectionEl = document.getElementById("project-modal-image-section");
+      const imageEl = document.getElementById("project-modal-image");
+      const imageCaptionEl = document.getElementById("project-modal-image-caption");
+
+      const focusableSelector = [
+        "a[href]",
+        "button:not([disabled])",
+        "textarea:not([disabled])",
+        "input:not([disabled])",
+        "select:not([disabled])",
+        "[tabindex]:not([tabindex='-1'])"
+      ].join(",");
+
+      let activeProject = null;
+      let lastFocusedElement = null;
+      function normalizeSlug(value) {
+        return String(value || "")
+          .trim()
+          .toLowerCase();
+      }
+
+      function getSlugFromLocation() {
+        const url = new URL(window.location.href);
+        const searchSlug = url.searchParams.get("project");
+        const hashSlug = url.hash ? decodeURIComponent(url.hash.slice(1)) : "";
+        return normalizeSlug(searchSlug || hashSlug);
+      }
+
+      function buildProjectPath(slug) {
+        const url = new URL(window.location.href);
+        url.searchParams.set("project", slug);
+        url.hash = slug;
+        return `${url.pathname}${url.search}${url.hash}`;
+      }
+
+      function buildPathWithoutProject() {
+        const url = new URL(window.location.href);
+        url.searchParams.delete("project");
+        url.hash = "";
+        return `${url.pathname}${url.search}${url.hash}`;
+      }
+
+      function lockBodyScroll() {
+        const scrollbarCompensation = window.innerWidth - document.documentElement.clientWidth;
+        document.body.classList.add("modal-open");
+        if (scrollbarCompensation > 0) {
+          document.body.style.paddingRight = `${scrollbarCompensation}px`;
+        }
+      }
+
+      function unlockBodyScroll() {
+        document.body.classList.remove("modal-open");
+        document.body.style.paddingRight = "";
+      }
+
+      function getLinkMarkup(label, href) {
+        return `<a class="modal-link" href="${href}" target="_blank" rel="noreferrer">${label}<i data-lucide="arrow-up-right" class="h-4 w-4" aria-hidden="true"></i></a>`;
+      }
+
+      function renderModal(project) {
+        titleEl.textContent = project.title;
+        oneLinerEl.textContent = project.oneLiner;
+        problemEl.textContent = project.problem;
+        solutionEl.textContent = project.solution;
+
+        featuresEl.innerHTML = project.features.map((item) => `<li>${item}</li>`).join("");
+        learningsEl.innerHTML = project.learnings.map((item) => `<li>${item}</li>`).join("");
+
+        techStackEl.innerHTML = project.techStack
+          .map((tech) => `<span class="chip">${tech}</span>`)
+          .join("");
+
+        const availableLinks = [
+          project.links.github ? getLinkMarkup("GitHub", project.links.github) : "",
+          project.links.live ? getLinkMarkup("Sitio", project.links.live) : "",
+          project.links.docs ? getLinkMarkup("Documentacion", project.links.docs) : ""
+        ].filter(Boolean);
+
+        linksEl.innerHTML = availableLinks.join("");
+        linksSectionEl.hidden = availableLinks.length === 0;
+
+        if (project.image && project.image.src) {
+          imageSectionEl.hidden = false;
+          imageEl.src = project.image.src;
+          imageEl.alt = project.image.alt || `Captura de ${project.title}`;
+          imageCaptionEl.textContent = project.image.alt || "";
+        } else {
+          imageSectionEl.hidden = true;
+          imageEl.src = "";
+          imageEl.alt = "";
+          imageCaptionEl.textContent = "";
+        }
+
+        if (window.lucide) {
+          window.lucide.createIcons();
+        }
+      }
+
+      function openProject(project, options = {}) {
+        const { updateHistory = true, restoreFocus = true } = options;
+
+        activeProject = project;
+        shareStatusEl.textContent = "";
+
+        if (restoreFocus) {
+          lastFocusedElement = document.activeElement;
+        }
+
+        renderModal(project);
+
+        if (!dialogEl.open) {
+          dialogEl.showModal();
+          lockBodyScroll();
+        }
+
+        requestAnimationFrame(() => closeBtnEl.focus());
+
+        if (updateHistory) {
+          const currentSlug = getSlugFromLocation();
+          if (currentSlug !== project.slug) {
+            history.pushState({ project: project.slug }, "", buildProjectPath(project.slug));
+          }
+        }
+      }
+
+      function closeProject(options = {}) {
+        const { updateHistory = true, restoreFocus = true } = options;
+
+        if (!dialogEl.open) {
+          return;
+        }
+
+        dialogEl.close();
+        unlockBodyScroll();
+
+        if (updateHistory && getSlugFromLocation()) {
+          history.replaceState({ project: null }, "", buildPathWithoutProject());
+        }
+
+        activeProject = null;
+
+        if (restoreFocus && lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+          lastFocusedElement.focus();
+        }
+      }
+
+      function trapFocus(event) {
+        if (!dialogEl.open || event.key !== "Tab") {
+          return;
+        }
+
+        const focusableItems = Array.from(dialogPanelEl.querySelectorAll(focusableSelector));
+        if (focusableItems.length === 0) {
+          return;
+        }
+
+        const firstItem = focusableItems[0];
+        const lastItem = focusableItems[focusableItems.length - 1];
+
+        if (event.shiftKey && document.activeElement === firstItem) {
+          event.preventDefault();
+          lastItem.focus();
+          return;
+        }
+
+        if (!event.shiftKey && document.activeElement === lastItem) {
+          event.preventDefault();
+          firstItem.focus();
+        }
+      }
+      function handleDialogKeydown(event) {
+        trapFocus(event);
+
+        if (!activeProject) {
+          return;
+        }
+
+        if (event.key === "Escape") {
+          event.preventDefault();
+          closeProject();
+        }
+      }
+
+      function syncProjectFromUrl() {
+        const slug = getSlugFromLocation();
+
+        if (!slug) {
+          closeProject({ updateHistory: false, restoreFocus: false });
+          return;
+        }
+
+        const project = projectsBySlug.get(slug);
+
+        if (!project) {
+          closeProject({ updateHistory: false, restoreFocus: false });
+          return;
+        }
+
+        if (activeProject && activeProject.slug === project.slug && dialogEl.open) {
+          return;
+        }
+
+        openProject(project, { updateHistory: false, restoreFocus: false });
+      }
+
+      async function copyShareLink() {
+        if (!activeProject) {
+          return;
+        }
+
+        const shareUrl = new URL(window.location.href);
+        shareUrl.searchParams.set("project", activeProject.slug);
+        shareUrl.hash = activeProject.slug;
+
+        try {
+          await navigator.clipboard.writeText(shareUrl.toString());
+          shareStatusEl.textContent = "Link copiado al portapapeles.";
+          return;
+        } catch (error) {
+          const tempInput = document.createElement("textarea");
+          tempInput.value = shareUrl.toString();
+          tempInput.setAttribute("readonly", "");
+          tempInput.style.position = "absolute";
+          tempInput.style.left = "-9999px";
+          document.body.appendChild(tempInput);
+          tempInput.select();
+
+          const copied = document.execCommand("copy");
+          document.body.removeChild(tempInput);
+          shareStatusEl.textContent = copied ? "Link copiado al portapapeles." : "No se pudo copiar el link.";
+        }
+      }
+
+      function renderProjectCards() {
+        gridEl.innerHTML = projects
+          .map(
+            (project) => `
+              <article
+                class="app-card project-card project-card-trigger rounded-2xl p-5 sm:p-6"
+                data-project-slug="${project.slug}"
+                tabindex="0"
+                role="button"
+                aria-label="Ver detalle de ${project.title}"
+              >
+                <div class="project-icon" data-accent="${project.accent}">
+                  <i data-lucide="${project.icon}" aria-hidden="true"></i>
+                </div>
+                <h3 class="text-[2rem] font-semibold tracking-tight text-slate-900">${project.title}</h3>
+                <p class="text-[1.05rem] text-slate-600">${project.oneLiner}</p>
+                <div class="flex flex-wrap gap-2">
+                  ${project.techStack.slice(0, 4).map((tech) => `<span class="chip">${tech}</span>`).join("")}
+                </div>
+                <span class="open-project" data-accent="${project.accent}">
+                  Ver detalles
+                  <i data-lucide="arrow-right" class="h-5 w-5" aria-hidden="true"></i>
+                </span>
+              </article>
+            `
+          )
+          .join("");
+
+        gridEl.querySelectorAll("[data-project-slug]").forEach((cardEl) => {
+          const openFromCard = () => {
+            const project = projectsBySlug.get(cardEl.getAttribute("data-project-slug"));
+            if (project) {
+              openProject(project);
+            }
+          };
+
+          cardEl.addEventListener("click", openFromCard);
+          cardEl.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              openFromCard();
+            }
+          });
+        });
+
+        if (window.lucide) {
+          window.lucide.createIcons();
+        }
+      }
+
+      closeBtnEl.addEventListener("click", () => closeProject());
+      shareBtnEl.addEventListener("click", copyShareLink);
+
+      dialogEl.addEventListener("cancel", (event) => {
+        event.preventDefault();
+        closeProject();
+      });
+
+      dialogEl.addEventListener("click", (event) => {
+        if (event.target === dialogEl) {
+          closeProject();
+        }
+      });
+
+      dialogEl.addEventListener("keydown", handleDialogKeydown);
+      window.addEventListener("popstate", syncProjectFromUrl);
+      window.addEventListener("hashchange", syncProjectFromUrl);
 
       const observer = new IntersectionObserver(
         (entries) => {
@@ -366,6 +902,10 @@
       );
 
       document.querySelectorAll(".fade-up").forEach((el) => observer.observe(el));
+
+      renderProjectCards();
+      syncProjectFromUrl();
     </script>
   </body>
 </html>
+
