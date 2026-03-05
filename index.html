@@ -678,17 +678,14 @@
         "[tabindex]:not([tabindex='-1'])"
       ].join(",");
       const AUTO_IMAGE_EXTENSIONS = ["webp", "png", "jpg", "jpeg", "gif", "svg"];
-      const AUTO_IMAGE_BASE_NAMES = [
-        "cover",
-        ...Array.from({ length: 12 }, (_, i) => String(i + 1).padStart(2, "0")),
-        ...Array.from({ length: 12 }, (_, i) => String(i + 1))
-      ];
+      const MAX_AUTO_GALLERY_IMAGES = 12;
 
       let activeProject = null;
       let lastFocusedElement = null;
       let activeProjectImages = [];
       let activeProjectImageIndex = 0;
       let imageResolveToken = 0;
+      const projectImagesCache = new Map();
       function normalizeSlug(value) {
         return String(value || "")
           .trim()
@@ -747,23 +744,29 @@
         activeProjectImageIndex = 0;
       }
 
-      function getAutoImageCandidates(project) {
-        const candidates = [];
-        AUTO_IMAGE_BASE_NAMES.forEach((baseName) => {
-          AUTO_IMAGE_EXTENSIONS.forEach((ext) => {
-            candidates.push(`./assets/projects/${project.slug}/${baseName}.${ext}`);
-          });
-        });
-        return Array.from(new Set(candidates));
+      function buildProjectImagePath(project, baseName, extension) {
+        return `./assets/projects/${project.slug}/${baseName}.${extension}`;
       }
 
-      function checkImageExists(src) {
-        return new Promise((resolve) => {
-          const probe = new Image();
-          probe.onload = () => resolve(true);
-          probe.onerror = () => resolve(false);
-          probe.src = src;
-        });
+      async function checkImageExists(src) {
+        try {
+          const response = await fetch(src, { method: "HEAD", cache: "no-store" });
+          return response.ok;
+        } catch (error) {
+          return false;
+        }
+      }
+
+      async function findFirstExistingImageVariant(project, baseName) {
+        for (const extension of AUTO_IMAGE_EXTENSIONS) {
+          const candidate = buildProjectImagePath(project, baseName, extension);
+          const exists = await checkImageExists(candidate);
+          if (exists) {
+            return candidate;
+          }
+        }
+
+        return null;
       }
 
       function normalizeProjectImageEntry(entry, title, index) {
@@ -785,30 +788,49 @@
       }
 
       async function resolveProjectImages(project) {
+        if (projectImagesCache.has(project.slug)) {
+          return projectImagesCache.get(project.slug);
+        }
+
         if (Array.isArray(project.image) && project.image.length > 0) {
-          return project.image
+          const normalized = project.image
             .map((item, index) => normalizeProjectImageEntry(item, project.title, index))
             .filter(Boolean);
+          projectImagesCache.set(project.slug, normalized);
+          return normalized;
         }
 
         if (project.image && project.image.src) {
           const singleImage = normalizeProjectImageEntry(project.image, project.title, 0);
-          return singleImage ? [singleImage] : [];
+          const normalized = singleImage ? [singleImage] : [];
+          projectImagesCache.set(project.slug, normalized);
+          return normalized;
         }
 
         const resolvedImages = [];
-        const candidates = getAutoImageCandidates(project);
-        for (let index = 0; index < candidates.length; index += 1) {
-          const candidate = candidates[index];
-          const exists = await checkImageExists(candidate);
-          if (exists) {
-            resolvedImages.push({
-              src: candidate,
-              alt: `Captura ${resolvedImages.length + 1} de ${project.title}`
-            });
-          }
+
+        const coverImage = await findFirstExistingImageVariant(project, "cover");
+        if (coverImage) {
+          resolvedImages.push({
+            src: coverImage,
+            alt: `Captura ${resolvedImages.length + 1} de ${project.title}`
+          });
         }
 
+        for (let imageIndex = 1; imageIndex <= MAX_AUTO_GALLERY_IMAGES; imageIndex += 1) {
+          const baseName = String(imageIndex).padStart(2, "0");
+          const numberedImage = await findFirstExistingImageVariant(project, baseName);
+          if (!numberedImage) {
+            break;
+          }
+
+          resolvedImages.push({
+            src: numberedImage,
+            alt: `Captura ${resolvedImages.length + 1} de ${project.title}`
+          });
+        }
+
+        projectImagesCache.set(project.slug, resolvedImages);
         return resolvedImages;
       }
 

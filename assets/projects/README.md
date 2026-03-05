@@ -6,7 +6,6 @@ Para que las imagenes se vinculen automaticamente al modal de un proyecto:
 2. Usa alguno de estos nombres base:
    - `cover` (portada)
    - `01`, `02`, `03`... `12` (galeria)
-   - `1`, `2`, `3`... `12` (tambien soportado)
 3. Extensiones soportadas: `webp`, `png`, `jpg`, `jpeg`, `gif`, `svg`.
 
 Ejemplo:
