@@ -633,9 +633,17 @@
     </footer>
 
     <script type="module">
-      import { projects } from "./projects.js";
+      import { projects } from "./projects.js?v=20260305-1";
+      const PROJECT_DISPLAY_ORDER = ["expense-log", "sorty", "home-assistant", "clinica-utn"];
+      const orderedProjects = [...projects].sort((a, b) => {
+        const indexA = PROJECT_DISPLAY_ORDER.indexOf(a.slug);
+        const indexB = PROJECT_DISPLAY_ORDER.indexOf(b.slug);
+        const normalizedA = indexA === -1 ? Number.MAX_SAFE_INTEGER : indexA;
+        const normalizedB = indexB === -1 ? Number.MAX_SAFE_INTEGER : indexB;
+        return normalizedA - normalizedB;
+      });
 
-      const projectsBySlug = new Map(projects.map((project) => [project.slug, project]));
+      const projectsBySlug = new Map(orderedProjects.map((project) => [project.slug, project]));
       const gridEl = document.getElementById("projects-grid");
 
       const dialogEl = document.getElementById("project-modal");
@@ -1032,7 +1040,7 @@
       }
 
       function renderProjectCards() {
-        gridEl.innerHTML = projects
+        gridEl.innerHTML = orderedProjects
           .map(
             (project) => `
               <article
