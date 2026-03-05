@@ -248,6 +248,7 @@
       }
 
       .carousel-frame {
+        position: relative;
         overflow: hidden;
         border-radius: 0.8rem;
         border: 1px solid rgba(148, 163, 184, 0.3);
@@ -259,6 +260,52 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+      }
+
+      .carousel-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.25rem;
+        height: 2.25rem;
+        border-radius: 9999px;
+        border: 1px solid rgba(148, 163, 184, 0.45);
+        background: rgba(255, 255, 255, 0.9);
+        color: #0f172a;
+      }
+
+      .carousel-nav:hover {
+        background: rgba(255, 255, 255, 1);
+      }
+
+      .carousel-nav:disabled {
+        opacity: 0.55;
+        cursor: default;
+      }
+
+      .carousel-nav-prev {
+        left: 0.55rem;
+      }
+
+      .carousel-nav-next {
+        right: 0.55rem;
+      }
+
+      .carousel-meta {
+        margin-top: 0.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+      }
+
+      .carousel-counter {
+        font-size: 0.9rem;
+        color: #475569;
+        font-weight: 600;
       }
 
       .modal-link {
@@ -498,8 +545,27 @@
         <section id="project-modal-image-section" class="carousel-shell" aria-label="Captura del proyecto" hidden>
           <div class="carousel-frame">
             <img id="project-modal-image" class="carousel-image" src="" alt="" loading="lazy" />
+            <button
+              id="project-modal-image-prev"
+              type="button"
+              class="carousel-nav carousel-nav-prev"
+              aria-label="Imagen anterior"
+            >
+              <i data-lucide="chevron-left" class="h-4 w-4" aria-hidden="true"></i>
+            </button>
+            <button
+              id="project-modal-image-next"
+              type="button"
+              class="carousel-nav carousel-nav-next"
+              aria-label="Imagen siguiente"
+            >
+              <i data-lucide="chevron-right" class="h-4 w-4" aria-hidden="true"></i>
+            </button>
           </div>
-          <p id="project-modal-image-caption" class="mt-3 text-sm text-slate-600"></p>
+          <div class="carousel-meta">
+            <p id="project-modal-image-caption" class="text-sm text-slate-600"></p>
+            <p id="project-modal-image-counter" class="carousel-counter" aria-live="polite"></p>
+          </div>
         </section>
 
         <div class="mt-6 grid gap-5 md:grid-cols-2">
@@ -590,7 +656,10 @@
 
       const imageSectionEl = document.getElementById("project-modal-image-section");
       const imageEl = document.getElementById("project-modal-image");
+      const imagePrevBtnEl = document.getElementById("project-modal-image-prev");
+      const imageNextBtnEl = document.getElementById("project-modal-image-next");
       const imageCaptionEl = document.getElementById("project-modal-image-caption");
+      const imageCounterEl = document.getElementById("project-modal-image-counter");
 
       const focusableSelector = [
         "a[href]",
@@ -600,9 +669,18 @@
         "select:not([disabled])",
         "[tabindex]:not([tabindex='-1'])"
       ].join(",");
+      const AUTO_IMAGE_EXTENSIONS = ["webp", "png", "jpg", "jpeg", "gif", "svg"];
+      const AUTO_IMAGE_BASE_NAMES = [
+        "cover",
+        ...Array.from({ length: 12 }, (_, i) => String(i + 1).padStart(2, "0")),
+        ...Array.from({ length: 12 }, (_, i) => String(i + 1))
+      ];
 
       let activeProject = null;
       let lastFocusedElement = null;
+      let activeProjectImages = [];
+      let activeProjectImageIndex = 0;
+      let imageResolveToken = 0;
       function normalizeSlug(value) {
         return String(value || "")
           .trim()
@@ -647,6 +725,133 @@
         return `<a class="modal-link" href="${href}" target="_blank" rel="noreferrer">${label}<i data-lucide="arrow-up-right" class="h-4 w-4" aria-hidden="true"></i></a>`;
       }
 
+      function resetImageSection() {
+        imageSectionEl.hidden = true;
+        imageEl.src = "";
+        imageEl.alt = "";
+        imageCaptionEl.textContent = "";
+        imageCounterEl.textContent = "";
+        imagePrevBtnEl.disabled = true;
+        imageNextBtnEl.disabled = true;
+        imagePrevBtnEl.hidden = true;
+        imageNextBtnEl.hidden = true;
+        activeProjectImages = [];
+        activeProjectImageIndex = 0;
+      }
+
+      function getAutoImageCandidates(project) {
+        const candidates = [];
+        AUTO_IMAGE_BASE_NAMES.forEach((baseName) => {
+          AUTO_IMAGE_EXTENSIONS.forEach((ext) => {
+            candidates.push(`./assets/projects/${project.slug}/${baseName}.${ext}`);
+          });
+        });
+        return Array.from(new Set(candidates));
+      }
+
+      function checkImageExists(src) {
+        return new Promise((resolve) => {
+          const probe = new Image();
+          probe.onload = () => resolve(true);
+          probe.onerror = () => resolve(false);
+          probe.src = src;
+        });
+      }
+
+      function normalizeProjectImageEntry(entry, title, index) {
+        if (typeof entry === "string") {
+          return {
+            src: entry,
+            alt: `Captura ${index + 1} de ${title}`
+          };
+        }
+
+        if (entry && typeof entry === "object" && entry.src) {
+          return {
+            src: entry.src,
+            alt: entry.alt || `Captura ${index + 1} de ${title}`
+          };
+        }
+
+        return null;
+      }
+
+      async function resolveProjectImages(project) {
+        if (Array.isArray(project.image) && project.image.length > 0) {
+          return project.image
+            .map((item, index) => normalizeProjectImageEntry(item, project.title, index))
+            .filter(Boolean);
+        }
+
+        if (project.image && project.image.src) {
+          const singleImage = normalizeProjectImageEntry(project.image, project.title, 0);
+          return singleImage ? [singleImage] : [];
+        }
+
+        const resolvedImages = [];
+        const candidates = getAutoImageCandidates(project);
+        for (let index = 0; index < candidates.length; index += 1) {
+          const candidate = candidates[index];
+          const exists = await checkImageExists(candidate);
+          if (exists) {
+            resolvedImages.push({
+              src: candidate,
+              alt: `Captura ${resolvedImages.length + 1} de ${project.title}`
+            });
+          }
+        }
+
+        return resolvedImages;
+      }
+
+      function renderCurrentImage() {
+        if (activeProjectImages.length === 0) {
+          resetImageSection();
+          return;
+        }
+
+        const currentImage = activeProjectImages[activeProjectImageIndex];
+        imageSectionEl.hidden = false;
+        imageEl.src = currentImage.src;
+        imageEl.alt = currentImage.alt;
+        imageCaptionEl.textContent = currentImage.alt;
+        imageCounterEl.textContent = `${activeProjectImageIndex + 1} / ${activeProjectImages.length}`;
+
+        const hasMultipleImages = activeProjectImages.length > 1;
+        imagePrevBtnEl.hidden = !hasMultipleImages;
+        imageNextBtnEl.hidden = !hasMultipleImages;
+        imagePrevBtnEl.disabled = !hasMultipleImages;
+        imageNextBtnEl.disabled = !hasMultipleImages;
+      }
+
+      function moveCarousel(direction) {
+        if (activeProjectImages.length < 2) {
+          return;
+        }
+
+        const total = activeProjectImages.length;
+        activeProjectImageIndex = (activeProjectImageIndex + direction + total) % total;
+        renderCurrentImage();
+      }
+
+      async function renderProjectImages(project) {
+        const currentToken = ++imageResolveToken;
+        const resolvedImages = await resolveProjectImages(project);
+
+        if (!activeProject || activeProject.slug !== project.slug || currentToken !== imageResolveToken) {
+          return;
+        }
+
+        if (resolvedImages.length === 0) {
+          resetImageSection();
+          return;
+        }
+
+        activeProjectImages = resolvedImages;
+        activeProjectImageIndex = 0;
+        renderCurrentImage();
+      }
+
       function renderModal(project) {
         titleEl.textContent = project.title;
         oneLinerEl.textContent = project.oneLiner;
@@ -669,17 +874,8 @@
         linksEl.innerHTML = availableLinks.join("");
         linksSectionEl.hidden = availableLinks.length === 0;
 
-        if (project.image && project.image.src) {
-          imageSectionEl.hidden = false;
-          imageEl.src = project.image.src;
-          imageEl.alt = project.image.alt || `Captura de ${project.title}`;
-          imageCaptionEl.textContent = project.image.alt || "";
-        } else {
-          imageSectionEl.hidden = true;
-          imageEl.src = "";
-          imageEl.alt = "";
-          imageCaptionEl.textContent = "";
-        }
+        resetImageSection();
+        renderProjectImages(project);
 
         if (window.lucide) {
           window.lucide.createIcons();
@@ -727,6 +923,8 @@
           history.replaceState({ project: null }, "", buildPathWithoutProject());
         }
 
+        imageResolveToken += 1;
+        resetImageSection();
         activeProject = null;
 
         if (restoreFocus && lastFocusedElement && typeof lastFocusedElement.focus === "function") {
@@ -768,6 +966,18 @@
         if (event.key === "Escape") {
           event.preventDefault();
           closeProject();
+          return;
+        }
+
+        if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          moveCarousel(-1);
+          return;
+        }
+
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          moveCarousel(1);
         }
       }
 
@@ -873,6 +1083,8 @@
 
       closeBtnEl.addEventListener("click", () => closeProject());
       shareBtnEl.addEventListener("click", copyShareLink);
+      imagePrevBtnEl.addEventListener("click", () => moveCarousel(-1));
+      imageNextBtnEl.addEventListener("click", () => moveCarousel(1));
 
       dialogEl.addEventListener("cancel", (event) => {
         event.preventDefault();
