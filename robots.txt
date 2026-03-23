@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://joaquingz.com.ar/sitemap.xml
