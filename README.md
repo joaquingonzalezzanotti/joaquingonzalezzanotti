@@ -1,5 +1,10 @@
 <h1 align="center">Hola soy Joaquin Gonzalez Zanotti</h1>
-<h3 align="center">Estudiante de Ingenieria en Sistemas de la UTN-FRC</h3>
+<h3 align="center">
+  Estudiante de Ingeniería en Sistemas de Información - UTN FRC
+  <img src="./assets/Logo UTN.jpg" alt="UTN" width="22" height="22" align="center" />
+</h3>
+
+
 
 - 👨‍💻 [[Mi Portfolio](https://joaquingz.com.ar/)]
 
