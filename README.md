@@ -1,7 +1,7 @@
 <h1 align="center">Hola soy Joaquin Gonzalez Zanotti</h1>
 <h3 align="center">Estudiante de Ingenieria en Sistemas de la UTN-FRC</h3>
 
-- 👨‍💻 Mi Portfolio [[joaquingz.com.ar](https://joaquingz.com.ar/)](joaquingz.com.ar)
+- 👨‍💻 [[Mi Portfolio](https://joaquingz.com.ar/)]
 
 <h3 align="left">Encontrame en:</h3>
 <p align="left">
