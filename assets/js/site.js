@@ -19,5 +19,28 @@
         });
       });
     }
+
+    const stackSection = document.querySelector(".stack-section");
+    const stackFilters = document.querySelectorAll("[data-stack-filter]");
+
+    if (stackSection && stackFilters.length) {
+      stackFilters.forEach(function (filter) {
+        filter.addEventListener("click", function () {
+          const context = filter.getAttribute("data-stack-filter");
+          const isActive = filter.getAttribute("aria-pressed") === "true";
+
+          stackFilters.forEach(function (item) {
+            item.setAttribute("aria-pressed", "false");
+          });
+
+          if (isActive) {
+            stackSection.removeAttribute("data-active-context");
+          } else {
+            filter.setAttribute("aria-pressed", "true");
+            stackSection.setAttribute("data-active-context", context);
+          }
+        });
+      });
+    }
   });
 })();

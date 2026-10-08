@@ -777,38 +777,112 @@ p {
   margin-top: auto;
 }
 
-/* Toolbox Section */
-.toolbox-card {
+/* Stack Section */
+.stack-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.stack-filter {
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface);
+  color: var(--color-text-secondary);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color var(--transition), border-color var(--transition), background-color var(--transition);
+}
+
+.stack-filter:hover,
+.stack-filter[aria-pressed="true"] {
+  border-color: var(--color-border-accent);
+  background-color: var(--color-accent-light);
+  color: var(--color-accent);
+}
+
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.stack-group {
+  padding: 1.25rem;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  overflow: hidden;
   box-shadow: var(--shadow-subtle);
 }
 
-.toolbox-row {
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  padding: 1.1rem 1.5rem;
-  border-bottom: 1px solid var(--color-border);
-  align-items: center;
+.stack-group-title {
+  margin-bottom: 0.85rem;
+  font-size: 1rem;
+  font-weight: 700;
 }
 
-.toolbox-row:last-child {
-  border-bottom: none;
+.stack-list {
+  list-style: none;
 }
 
-.toolbox-category {
-  font-size: 0.9rem;
+.stack-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.65rem 0;
+  border-top: 1px solid var(--color-border-subtle);
+  transition: opacity var(--transition), color var(--transition);
+}
+
+.stack-tech {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--color-text-primary);
 }
 
-.toolbox-items {
-  font-family: var(--font-mono);
-  font-size: 0.88rem;
-  color: var(--color-text-secondary);
-  line-height: 1.5;
+.stack-contexts {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.stack-contexts span {
+  padding: 0.12rem 0.35rem;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-subtle);
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+}
+
+.stack-section:has(.stack-filter[data-stack-filter="kolektor"]:is(:hover, :focus-visible)) .stack-item:not([data-used~="kolektor"]),
+.stack-section[data-active-context="kolektor"] .stack-item:not([data-used~="kolektor"]),
+.stack-section:has(.stack-filter[data-stack-filter="residar"]:is(:hover, :focus-visible)) .stack-item:not([data-used~="residar"]),
+.stack-section[data-active-context="residar"] .stack-item:not([data-used~="residar"]),
+.stack-section:has(.stack-filter[data-stack-filter="expenselog"]:is(:hover, :focus-visible)) .stack-item:not([data-used~="expenselog"]),
+.stack-section[data-active-context="expenselog"] .stack-item:not([data-used~="expenselog"]),
+.stack-section:has(.stack-filter[data-stack-filter="homelab"]:is(:hover, :focus-visible)) .stack-item:not([data-used~="homelab"]),
+.stack-section[data-active-context="homelab"] .stack-item:not([data-used~="homelab"]) {
+  opacity: 0.35;
+}
+
+.stack-section:has(.stack-filter[data-stack-filter="kolektor"]:is(:hover, :focus-visible)) .stack-item[data-used~="kolektor"] .stack-tech,
+.stack-section[data-active-context="kolektor"] .stack-item[data-used~="kolektor"] .stack-tech,
+.stack-section:has(.stack-filter[data-stack-filter="residar"]:is(:hover, :focus-visible)) .stack-item[data-used~="residar"] .stack-tech,
+.stack-section[data-active-context="residar"] .stack-item[data-used~="residar"] .stack-tech,
+.stack-section:has(.stack-filter[data-stack-filter="expenselog"]:is(:hover, :focus-visible)) .stack-item[data-used~="expenselog"] .stack-tech,
+.stack-section[data-active-context="expenselog"] .stack-item[data-used~="expenselog"] .stack-tech,
+.stack-section:has(.stack-filter[data-stack-filter="homelab"]:is(:hover, :focus-visible)) .stack-item[data-used~="homelab"] .stack-tech,
+.stack-section[data-active-context="homelab"] .stack-item[data-used~="homelab"] .stack-tech {
+  color: var(--color-accent);
 }
 
 /* Contact & Footer Section */
@@ -918,12 +992,6 @@ p {
 
   .focus-grid {
     grid-template-columns: 1fr;
-  }
-
-  .toolbox-row {
-    grid-template-columns: 1fr;
-    gap: 0.35rem;
-    padding: 1rem;
   }
 
   .currently-header {

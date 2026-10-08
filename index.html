@@ -111,6 +111,7 @@
             <li><a href="#current" class="nav-link">Actual</a></li>
             <li><a href="#focus" class="nav-link">Enfoque</a></li>
             <li><a href="#projects" class="nav-link">Proyectos</a></li>
+            <li><a href="#stack" class="nav-link">Stack</a></li>
             <li><a href="#contact" class="nav-link">Contacto</a></li>
           </ul>
         </nav>
@@ -150,6 +151,7 @@
         <a href="#current" class="nav-link">Actual</a>
         <a href="#focus" class="nav-link">Enfoque</a>
         <a href="#projects" class="nav-link">Proyectos</a>
+        <a href="#stack" class="nav-link">Stack</a>
         <a href="#contact" class="nav-link">Contacto</a>
       </div>
     </header>
@@ -447,35 +449,62 @@
         </div>
       </section>
 
-      <!-- Herramientas Section -->
-      <section class="section">
+      <!-- Stack Section -->
+      <section id="stack" class="section stack-section">
         <div class="container">
           <div class="section-header">
-            <h2 class="section-title">Herramientas</h2>
-            <p class="section-subtitle">Herramientas y tecnologías con las que trabajo de forma regular.</p>
+            <h2 class="section-title">Stack</h2>
+            <p class="section-subtitle">Tecnologías con las que trabajo y dónde las usé.</p>
           </div>
-          <div class="toolbox-card">
-            <div class="toolbox-row">
-              <div class="toolbox-category">Backend</div>
-              <div class="toolbox-items">TypeScript · NestJS · Node.js · Go · Python</div>
-            </div>
-            <div class="toolbox-row">
-              <div class="toolbox-category">Datos</div>
-              <div class="toolbox-items">PostgreSQL · SQL · Prisma</div>
-            </div>
-            <div class="toolbox-row">
-              <div class="toolbox-category">Infraestructura</div>
-              <div class="toolbox-items">Docker · Linux · Proxmox · Cloudflare</div>
-            </div>
-            <div class="toolbox-row">
-              <div class="toolbox-category">Ingeniería</div>
-              <div class="toolbox-items">BPMN · CIB Seven · Testing · Git · CI/CD · Flujos asistidos por IA</div>
-            </div>
-            <div class="toolbox-row">
-              <div class="toolbox-category">Frontend</div>
-              <div class="toolbox-items">Next.js · React</div>
-            </div>
+          <div class="stack-filters" role="group" aria-label="Resaltar tecnologías por contexto">
+            <button type="button" class="stack-filter" data-stack-filter="kolektor" aria-pressed="false">Kolektor</button>
+            <button type="button" class="stack-filter" data-stack-filter="residar" aria-pressed="false">ResidAR</button>
+            <button type="button" class="stack-filter" data-stack-filter="expenselog" aria-pressed="false">ExpenseLog</button>
+            <button type="button" class="stack-filter" data-stack-filter="homelab" aria-pressed="false">Homelab</button>
           </div>
+          <div class="stack-grid">
+            <article class="stack-group">
+              <h3 class="stack-group-title">Backend</h3>
+              <ul class="stack-list">
+                <li class="stack-item" data-used="kolektor residar"><span class="stack-tech">NestJS</span><span class="stack-contexts"><span>Kolektor</span><span>ResidAR</span></span></li>
+                <li class="stack-item" data-used="kolektor residar"><span class="stack-tech">TypeScript</span><span class="stack-contexts"><span>Kolektor</span><span>ResidAR</span></span></li>
+                <li class="stack-item" data-used="expenselog"><span class="stack-tech">Go</span><span class="stack-contexts"><span>ExpenseLog</span></span></li>
+                <li class="stack-item" data-used="kolektor"><span class="stack-tech">Python</span><span class="stack-contexts"><span>Kolektor</span></span></li>
+              </ul>
+            </article>
+            <article class="stack-group">
+              <h3 class="stack-group-title">Datos</h3>
+              <ul class="stack-list">
+                <li class="stack-item" data-used="kolektor residar expenselog"><span class="stack-tech">PostgreSQL</span><span class="stack-contexts"><span>Kolektor</span><span>ResidAR</span><span>ExpenseLog</span></span></li>
+                <li class="stack-item" data-used="residar"><span class="stack-tech">Prisma</span><span class="stack-contexts"><span>ResidAR</span></span></li>
+              </ul>
+            </article>
+            <article class="stack-group">
+              <h3 class="stack-group-title">Infraestructura</h3>
+              <ul class="stack-list">
+                <li class="stack-item" data-used="residar expenselog homelab"><span class="stack-tech">Docker</span><span class="stack-contexts"><span>ResidAR</span><span>ExpenseLog</span><span>Homelab</span></span></li>
+                <li class="stack-item" data-used="homelab"><span class="stack-tech">Linux / Debian</span><span class="stack-contexts"><span>Homelab</span></span></li>
+                <li class="stack-item" data-used="homelab"><span class="stack-tech">Proxmox</span><span class="stack-contexts"><span>Homelab</span></span></li>
+                <li class="stack-item" data-used="homelab"><span class="stack-tech">Cloudflare</span><span class="stack-contexts"><span>Homelab</span></span></li>
+              </ul>
+            </article>
+            <article class="stack-group">
+              <h3 class="stack-group-title">Ingeniería</h3>
+              <ul class="stack-list">
+                <li class="stack-item" data-used="kolektor"><span class="stack-tech">BPMN</span><span class="stack-contexts"><span>Kolektor</span></span></li>
+                <li class="stack-item" data-used="kolektor"><span class="stack-tech">CIB Seven</span><span class="stack-contexts"><span>Kolektor</span></span></li>
+                <li class="stack-item" data-used="kolektor"><span class="stack-tech">Testing</span><span class="stack-contexts"><span>Kolektor</span></span></li>
+              </ul>
+            </article>
+            <article class="stack-group">
+              <h3 class="stack-group-title">Frontend</h3>
+              <ul class="stack-list">
+                <li class="stack-item" data-used="residar"><span class="stack-tech">Next.js</span><span class="stack-contexts"><span>ResidAR</span></span></li>
+                <li class="stack-item" data-used="expenselog"><span class="stack-tech">JavaScript</span><span class="stack-contexts"><span>ExpenseLog</span></span></li>
+              </ul>
+            </article>
+          </div>
+          <!-- TODO: Confirmar contextos de uso para Node.js, SQL, Git, CI/CD, React y flujos asistidos por IA. -->
         </div>
       </section>
 
