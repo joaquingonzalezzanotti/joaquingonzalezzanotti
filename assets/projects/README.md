@@ -1,17 +1,9 @@
-## Imagenes de proyectos
+## Imágenes de proyectos
 
-Para que las imagenes se vinculen automaticamente al modal de un proyecto:
+Cada proyecto guarda su portada en `assets/projects/<slug>/`. Para sumar o editar una card:
 
-1. Ubicala en `assets/projects/<slug-del-proyecto>/`
-2. Usa alguno de estos nombres base:
-   - `cover` (portada)
-   - `01`, `02`, `03`... `12` (galeria)
-3. Extensiones soportadas: `webp`, `png`, `jpg`, `jpeg`, `gif`, `svg`.
+1. Agregá una portada optimizada, preferentemente `cover.webp`.
+2. Actualizá el proyecto en `assets/data/projects.json`.
+3. Ejecutá `node scripts/render-projects.mjs` para regenerar las páginas ES/EN.
 
-Ejemplo:
-- `assets/projects/clinica-utn/cover.png`
-- `assets/projects/clinica-utn/01.webp`
-- `assets/projects/clinica-utn/02.webp`
-- `assets/projects/sorty/cover.webp`
-
-El sitio detecta todas las imagenes encontradas y habilita carrusel.
+El carrusel muestra tres cards en desktop, dos en tablet y una en mobile. Las imágenes grandes de origen no deben usarse directamente en el HTML: generá primero una versión WebP optimizada.

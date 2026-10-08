@@ -1,0 +1,171 @@
+{
+  "section": {
+    "title": {
+      "es": "Cómo construyo sistemas",
+      "en": "How I build systems"
+    },
+    "subtitle": {
+      "es": "Tecnologías conectadas por la forma en que las llevo del producto a producción.",
+      "en": "Technologies connected by the way I take systems from product to production."
+    },
+    "eyebrow": {
+      "es": "Arquitectura de trabajo",
+      "en": "Working architecture"
+    },
+    "defaultSummary": {
+      "es": "Elegí un proyecto para recorrer su arquitectura.",
+      "en": "Choose a project to explore its architecture."
+    },
+    "filterLabel": {
+      "es": "Explorar arquitectura por proyecto",
+      "en": "Explore architecture by project"
+    }
+  },
+  "contexts": [
+    {
+      "id": "kolektor",
+      "label": "Kolektor",
+      "summary": {
+        "es": "Procesos empresariales, backend e integración de datos.",
+        "en": "Business processes, backend, and data integration."
+      }
+    },
+    {
+      "id": "residar",
+      "label": "ResidAR",
+      "summary": {
+        "es": "Producto web, API y persistencia para gestión operativa.",
+        "en": "Web product, API, and persistence for operational management."
+      }
+    },
+    {
+      "id": "expenselog",
+      "label": "ExpenseLog",
+      "summary": {
+        "es": "Servicio en Go para registrar y analizar finanzas personales.",
+        "en": "A Go service for tracking and analyzing personal finances."
+      }
+    },
+    {
+      "id": "homelab",
+      "label": "Homelab",
+      "summary": {
+        "es": "Infraestructura propia: virtualización, contenedores y red.",
+        "en": "Self-hosted infrastructure: virtualization, containers, and networking."
+      }
+    }
+  ],
+  "layers": [
+    {
+      "id": "interface",
+      "title": {
+        "es": "Producto e interfaz",
+        "en": "Product and interface"
+      },
+      "technologies": [
+        {
+          "name": "Next.js",
+          "mark": "NX",
+          "contexts": ["residar"]
+        },
+        {
+          "name": "JavaScript",
+          "mark": "JS",
+          "contexts": ["expenselog"]
+        }
+      ]
+    },
+    {
+      "id": "backend",
+      "title": {
+        "es": "Backend",
+        "en": "Backend"
+      },
+      "technologies": [
+        {
+          "name": "NestJS",
+          "mark": "NS",
+          "contexts": ["kolektor", "residar"]
+        },
+        {
+          "name": "TypeScript",
+          "mark": "TS",
+          "contexts": ["kolektor", "residar"]
+        },
+        {
+          "name": "Go",
+          "mark": "GO",
+          "contexts": ["expenselog"]
+        },
+        {
+          "name": "Python",
+          "mark": "PY",
+          "contexts": ["kolektor"]
+        },
+        {
+          "name": "Testing",
+          "mark": "QA",
+          "contexts": ["kolektor"]
+        }
+      ]
+    },
+    {
+      "id": "data-processes",
+      "title": {
+        "es": "Datos y procesos",
+        "en": "Data and processes"
+      },
+      "technologies": [
+        {
+          "name": "PostgreSQL",
+          "mark": "PG",
+          "contexts": ["kolektor", "residar", "expenselog"]
+        },
+        {
+          "name": "Prisma",
+          "mark": "PR",
+          "contexts": ["residar"]
+        },
+        {
+          "name": "BPMN",
+          "mark": "BP",
+          "contexts": ["kolektor"]
+        },
+        {
+          "name": "CIB Seven",
+          "mark": "C7",
+          "contexts": ["kolektor"]
+        }
+      ]
+    },
+    {
+      "id": "operation",
+      "title": {
+        "es": "Operación",
+        "en": "Operations"
+      },
+      "technologies": [
+        {
+          "name": "Docker",
+          "mark": "DK",
+          "contexts": ["residar", "expenselog", "homelab"]
+        },
+        {
+          "name": "Linux / Debian",
+          "mark": "LX",
+          "contexts": ["homelab"]
+        },
+        {
+          "name": "Proxmox",
+          "mark": "PX",
+          "contexts": ["homelab"]
+        },
+        {
+          "name": "Cloudflare",
+          "mark": "CF",
+          "contexts": ["homelab"]
+        }
+      ]
+    }
+  ]
+}

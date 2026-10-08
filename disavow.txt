@@ -1,0 +1,3 @@
+# Disavow file for joaquingz.com.ar
+# Created: 2026-03-23
+domain:kevinsfrazier.shop
