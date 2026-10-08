@@ -257,23 +257,6 @@ p {
   transform: translateY(-1px);
 }
 
-.btn-secondary {
-  background-color: var(--color-surface);
-  color: var(--color-text-primary);
-  border: 1px solid var(--color-border);
-}
-
-.btn-secondary:hover {
-  border-color: var(--color-border-hover);
-  background-color: var(--color-surface-subtle);
-  transform: translateY(-1px);
-}
-
-.btn-sm {
-  padding: 0.35rem 0.75rem;
-  font-size: 0.8rem;
-}
-
 /* Chips and Tags */
 .chip {
   display: inline-flex;
@@ -286,12 +269,6 @@ p {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   color: var(--color-text-secondary);
-}
-
-.chip-accent {
-  background-color: var(--color-accent-light);
-  border-color: var(--color-border-accent);
-  color: var(--color-accent);
 }
 
 /* Sections common */
@@ -891,26 +868,104 @@ p {
   padding-bottom: 3rem;
 }
 
-.contact-card {
+.contact-panel {
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  overflow: hidden;
   box-shadow: var(--shadow-subtle);
 }
 
-.contact-text {
-  font-size: 1.05rem;
-  color: var(--color-text-secondary);
+.contact-list {
+  list-style: none;
 }
 
-.contact-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.85rem;
+.contact-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.35rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.9rem;
+  min-height: 4.25rem;
+  padding: 0.85rem 1.15rem;
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color var(--transition);
+}
+
+.contact-row:last-child {
+  border-bottom: none;
+}
+
+.contact-row:hover {
+  background-color: var(--color-surface-subtle);
+}
+
+.contact-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--color-accent);
+  background-color: var(--color-surface-subtle);
+}
+
+.contact-main {
+  display: grid;
+  gap: 0.08rem;
+  min-width: 0;
+}
+
+.contact-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.contact-value {
+  overflow-wrap: anywhere;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.contact-action {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.contact-row-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.contact-row-link:focus-visible {
+  outline-offset: -3px;
+}
+
+.contact-copy-button {
+  position: relative;
+  z-index: 2;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  color: var(--color-text-secondary);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.contact-copy-button:hover {
+  border-color: var(--color-border-accent);
+  color: var(--color-accent);
 }
 
 .site-footer {

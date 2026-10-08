@@ -117,15 +117,6 @@
         </nav>
 
         <div class="nav-actions">
-          <a
-            href="/assets/cv/joaquin-gonzalez-zanotti-resume-en.pdf"
-            class="btn btn-secondary btn-sm"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Resume
-          </a>
-
           <div class="lang-switch" role="group" aria-label="Language selector">
             <button class="lang-btn" data-lang-switch="es">ES</button>
             <button class="lang-btn active" data-lang-switch="en" aria-current="true">EN</button>
@@ -514,40 +505,33 @@
           <div class="section-header">
             <h2 class="section-title">Contact</h2>
           </div>
-          <div class="contact-card">
-            <p class="contact-text">
-              If you’d like to talk about backend development, infrastructure or a project, get in touch. I reply in Spanish or English.
-            </p>
-            <div class="contact-links">
-              <a href="mailto:joaquingzzz79@gmail.com" class="btn btn-primary">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                Email
-              </a>
-              <a
-                href="https://www.linkedin.com/in/joaquin-gonzalez-zanotti/"
-                class="btn btn-secondary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LinkedIn
-              </a>
-              <a
-                href="https://github.com/joaquingonzalezzanotti"
-                class="btn btn-secondary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub
-              </a>
-              <a
-                href="/assets/cv/joaquin-gonzalez-zanotti-resume-en.pdf"
-                class="btn btn-secondary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Download resume
-              </a>
-            </div>
+          <div class="contact-panel">
+            <ul class="contact-list">
+              <li class="contact-row">
+                <span class="contact-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-10 5L2 7"></path></svg></span>
+                <span class="contact-main"><span class="contact-label">Email</span><span class="contact-value">joaquingzzz79@gmail.com</span></span>
+                <a class="contact-row-link" href="mailto:joaquingzzz79@gmail.com" aria-label="Email joaquingzzz79@gmail.com"></a>
+                <button type="button" class="contact-copy-button" data-copy-email="joaquingzzz79@gmail.com" data-copy-label="Copy" data-copied-label="Copied ✓" aria-label="Copy email" hidden><span data-copy-status aria-live="polite">Copy</span></button>
+              </li>
+              <li class="contact-row">
+                <span class="contact-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></span>
+                <span class="contact-main"><span class="contact-label">LinkedIn</span><span class="contact-value">/in/joaquin-gonzalez-zanotti</span></span>
+                <span class="contact-action" aria-hidden="true">↗</span>
+                <a class="contact-row-link" href="https://www.linkedin.com/in/joaquin-gonzalez-zanotti/" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn"></a>
+              </li>
+              <li class="contact-row">
+                <span class="contact-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7A5.4 5.4 0 0 0 19.4 4 5 5 0 0 0 19.3.5S18.2.1 15 1.8a13.4 13.4 0 0 0-7 0C4.8.1 3.7.5 3.7.5A5 5 0 0 0 3.6 4a5.4 5.4 0 0 0-1.4 3.5c0 5.4 3.5 6.6 6.8 7A4.8 4.8 0 0 0 8 18v4"></path><path d="M8 19c-3 .9-3-1.5-4-2"></path></svg></span>
+                <span class="contact-main"><span class="contact-label">GitHub</span><span class="contact-value">@joaquingonzalezzanotti</span></span>
+                <span class="contact-action" aria-hidden="true">↗</span>
+                <a class="contact-row-link" href="https://github.com/joaquingonzalezzanotti" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub"></a>
+              </li>
+              <li class="contact-row">
+                <span class="contact-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="M12 12v6"></path><path d="m9 15 3 3 3-3"></path></svg></span>
+                <span class="contact-main"><span class="contact-label">Resume</span><span class="contact-value">PDF · English</span></span>
+                <span class="contact-action" aria-hidden="true">↓</span>
+                <a class="contact-row-link" href="/assets/cv/joaquin-gonzalez-zanotti-resume-en.pdf" download aria-label="Download resume in English"></a>
+              </li>
+            </ul>
           </div>
         </div>
       </section>
