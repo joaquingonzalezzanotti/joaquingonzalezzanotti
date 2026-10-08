@@ -15,3 +15,12 @@ Backend Developer at CIDS / Kolektor. I work mainly with backend development, BP
 `TypeScript` `NestJS` `PostgreSQL` `Python` `Go` `Docker` `Linux`
 
 [Portfolio](https://joaquingz.com.ar) · [LinkedIn](https://linkedin.com/in/joaquin-gonzalez-zanotti)
+
+## Updating the stack
+
+The stack section is generated for both languages from `assets/data/stack.json`.
+After changing projects, layers, or technologies, run:
+
+```powershell
+node scripts/render-stack.mjs
+```

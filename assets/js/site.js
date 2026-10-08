@@ -20,26 +20,83 @@
       });
     }
 
-    const stackSection = document.querySelector(".stack-section");
-    const stackFilters = document.querySelectorAll("[data-stack-filter]");
+    const stackStage = document.querySelector(".stack-stage");
 
-    if (stackSection && stackFilters.length) {
+    if (stackStage) {
+      const stackFilters = stackStage.querySelectorAll("[data-stack-filter]");
+      const stackNodes = stackStage.querySelectorAll(".stack-node");
+      const stackLayers = stackStage.querySelectorAll(".stack-layer");
+      const stackSummary = stackStage.querySelector("[data-stack-summary]");
+      const defaultSummary = stackSummary ? stackSummary.getAttribute("data-default-summary") : "";
+      let lockedFilter = null;
+
+      function containsContext(element, context) {
+        return (element.getAttribute("data-used") || "").split(" ").includes(context);
+      }
+
+      function showContext(filter) {
+        const context = filter ? filter.getAttribute("data-stack-filter") : "";
+        stackStage.classList.toggle("has-context", Boolean(context));
+
+        stackNodes.forEach(function (node) {
+          node.classList.toggle("is-context-match", Boolean(context) && containsContext(node, context));
+        });
+
+        stackLayers.forEach(function (layer, index) {
+          const nextLayer = stackLayers[index + 1];
+          const isMatch = Boolean(context) && containsContext(layer, context);
+          const continuesToNextLayer = isMatch && nextLayer && containsContext(nextLayer, context);
+
+          layer.classList.toggle("is-context-match", isMatch);
+          layer.classList.toggle("is-context-path", Boolean(continuesToNextLayer));
+        });
+
+        if (stackSummary) {
+          stackSummary.textContent = filter ? filter.getAttribute("data-stack-summary") : defaultSummary;
+        }
+      }
+
+      function restoreLockedContext() {
+        showContext(lockedFilter);
+      }
+
       stackFilters.forEach(function (filter) {
-        filter.addEventListener("click", function () {
-          const context = filter.getAttribute("data-stack-filter");
-          const isActive = filter.getAttribute("aria-pressed") === "true";
+        filter.addEventListener("mouseenter", function () {
+          if (!lockedFilter) showContext(filter);
+        });
 
+        filter.addEventListener("mouseleave", function () {
+          if (!lockedFilter) restoreLockedContext();
+        });
+
+        filter.addEventListener("focus", function () {
+          if (!lockedFilter) showContext(filter);
+        });
+
+        filter.addEventListener("blur", function () {
+          if (!lockedFilter) restoreLockedContext();
+        });
+
+        filter.addEventListener("click", function () {
+          const wasLocked = lockedFilter === filter;
+          lockedFilter = wasLocked ? null : filter;
+
+          stackFilters.forEach(function (item) {
+            item.setAttribute("aria-pressed", String(item === lockedFilter));
+          });
+
+          restoreLockedContext();
+        });
+      });
+
+      stackStage.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && lockedFilter) {
+          lockedFilter = null;
           stackFilters.forEach(function (item) {
             item.setAttribute("aria-pressed", "false");
           });
-
-          if (isActive) {
-            stackSection.removeAttribute("data-active-context");
-          } else {
-            filter.setAttribute("aria-pressed", "true");
-            stackSection.setAttribute("data-active-context", context);
-          }
-        });
+          restoreLockedContext();
+        }
       });
     }
 

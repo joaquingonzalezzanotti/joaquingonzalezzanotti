@@ -440,64 +440,124 @@
         </div>
       </section>
 
-      <!-- Stack Section -->
+      <!-- STACK:START -->
       <section id="stack" class="section stack-section">
         <div class="container">
           <div class="section-header">
-            <h2 class="section-title">Stack</h2>
-            <p class="section-subtitle">Technologies I work with, and where I’ve used them.</p>
+            <h2 class="section-title">How I build systems</h2>
+            <p class="section-subtitle">Technologies connected by the way I take systems from product to production.</p>
           </div>
-          <div class="stack-filters" role="group" aria-label="Highlight technologies by context">
-            <button type="button" class="stack-filter" data-stack-filter="kolektor" aria-pressed="false">Kolektor</button>
-            <button type="button" class="stack-filter" data-stack-filter="residar" aria-pressed="false">ResidAR</button>
-            <button type="button" class="stack-filter" data-stack-filter="expenselog" aria-pressed="false">ExpenseLog</button>
-            <button type="button" class="stack-filter" data-stack-filter="homelab" aria-pressed="false">Homelab</button>
+          <div class="stack-stage">
+            <div class="stack-stage-header">
+              <div class="stack-stage-intro">
+                <p class="stack-eyebrow">Working architecture</p>
+                <p class="stack-context-summary" data-stack-summary data-default-summary="Choose a project to explore its architecture." aria-live="polite">Choose a project to explore its architecture.</p>
+              </div>
+              <div class="stack-filters" role="group" aria-label="Explore architecture by project">
+                <button type="button" class="stack-filter" data-stack-filter="kolektor" data-stack-summary="Business processes, backend, and data integration." aria-pressed="false">Kolektor</button>
+                <button type="button" class="stack-filter" data-stack-filter="residar" data-stack-summary="Web product, API, and persistence for operational management." aria-pressed="false">ResidAR</button>
+                <button type="button" class="stack-filter" data-stack-filter="expenselog" data-stack-summary="A Go service for tracking and analyzing personal finances." aria-pressed="false">ExpenseLog</button>
+                <button type="button" class="stack-filter" data-stack-filter="homelab" data-stack-summary="Self-hosted infrastructure: virtualization, containers, and networking." aria-pressed="false">Homelab</button>
+              </div>
+            </div>
+            <div class="stack-map" style="--stack-layer-count: 4">
+              <article class="stack-layer" data-used="residar expenselog">
+                <div class="stack-layer-heading">
+                  <span class="stack-layer-index" aria-hidden="true">01</span>
+                  <h3>Product and interface</h3>
+                </div>
+                <div class="stack-nodes">
+                  <div class="stack-node" data-used="residar">
+                    <span class="stack-node-mark" aria-hidden="true">NX</span>
+                    <span class="stack-node-name">Next.js</span>
+                  </div>
+                  <div class="stack-node" data-used="expenselog">
+                    <span class="stack-node-mark" aria-hidden="true">JS</span>
+                    <span class="stack-node-name">JavaScript</span>
+                  </div>
+                </div>
+              </article>
+              <article class="stack-layer" data-used="kolektor residar expenselog">
+                <div class="stack-layer-heading">
+                  <span class="stack-layer-index" aria-hidden="true">02</span>
+                  <h3>Backend</h3>
+                </div>
+                <div class="stack-nodes">
+                  <div class="stack-node" data-used="kolektor residar">
+                    <span class="stack-node-mark" aria-hidden="true">NS</span>
+                    <span class="stack-node-name">NestJS</span>
+                  </div>
+                  <div class="stack-node" data-used="kolektor residar">
+                    <span class="stack-node-mark" aria-hidden="true">TS</span>
+                    <span class="stack-node-name">TypeScript</span>
+                  </div>
+                  <div class="stack-node" data-used="expenselog">
+                    <span class="stack-node-mark" aria-hidden="true">GO</span>
+                    <span class="stack-node-name">Go</span>
+                  </div>
+                  <div class="stack-node" data-used="kolektor">
+                    <span class="stack-node-mark" aria-hidden="true">PY</span>
+                    <span class="stack-node-name">Python</span>
+                  </div>
+                  <div class="stack-node" data-used="kolektor">
+                    <span class="stack-node-mark" aria-hidden="true">QA</span>
+                    <span class="stack-node-name">Testing</span>
+                  </div>
+                </div>
+              </article>
+              <article class="stack-layer" data-used="kolektor residar expenselog">
+                <div class="stack-layer-heading">
+                  <span class="stack-layer-index" aria-hidden="true">03</span>
+                  <h3>Data and processes</h3>
+                </div>
+                <div class="stack-nodes">
+                  <div class="stack-node" data-used="kolektor residar expenselog">
+                    <span class="stack-node-mark" aria-hidden="true">PG</span>
+                    <span class="stack-node-name">PostgreSQL</span>
+                  </div>
+                  <div class="stack-node" data-used="residar">
+                    <span class="stack-node-mark" aria-hidden="true">PR</span>
+                    <span class="stack-node-name">Prisma</span>
+                  </div>
+                  <div class="stack-node" data-used="kolektor">
+                    <span class="stack-node-mark" aria-hidden="true">BP</span>
+                    <span class="stack-node-name">BPMN</span>
+                  </div>
+                  <div class="stack-node" data-used="kolektor">
+                    <span class="stack-node-mark" aria-hidden="true">C7</span>
+                    <span class="stack-node-name">CIB Seven</span>
+                  </div>
+                </div>
+              </article>
+              <article class="stack-layer" data-used="residar expenselog homelab">
+                <div class="stack-layer-heading">
+                  <span class="stack-layer-index" aria-hidden="true">04</span>
+                  <h3>Operations</h3>
+                </div>
+                <div class="stack-nodes">
+                  <div class="stack-node" data-used="residar expenselog homelab">
+                    <span class="stack-node-mark" aria-hidden="true">DK</span>
+                    <span class="stack-node-name">Docker</span>
+                  </div>
+                  <div class="stack-node" data-used="homelab">
+                    <span class="stack-node-mark" aria-hidden="true">LX</span>
+                    <span class="stack-node-name">Linux / Debian</span>
+                  </div>
+                  <div class="stack-node" data-used="homelab">
+                    <span class="stack-node-mark" aria-hidden="true">PX</span>
+                    <span class="stack-node-name">Proxmox</span>
+                  </div>
+                  <div class="stack-node" data-used="homelab">
+                    <span class="stack-node-mark" aria-hidden="true">CF</span>
+                    <span class="stack-node-name">Cloudflare</span>
+                  </div>
+                </div>
+              </article>
+            </div>
           </div>
-          <div class="stack-grid">
-            <article class="stack-group">
-              <h3 class="stack-group-title">Backend</h3>
-              <ul class="stack-list">
-                <li class="stack-item" data-used="kolektor residar"><span class="stack-tech">NestJS</span><span class="stack-contexts"><span>Kolektor</span><span>ResidAR</span></span></li>
-                <li class="stack-item" data-used="kolektor residar"><span class="stack-tech">TypeScript</span><span class="stack-contexts"><span>Kolektor</span><span>ResidAR</span></span></li>
-                <li class="stack-item" data-used="expenselog"><span class="stack-tech">Go</span><span class="stack-contexts"><span>ExpenseLog</span></span></li>
-                <li class="stack-item" data-used="kolektor"><span class="stack-tech">Python</span><span class="stack-contexts"><span>Kolektor</span></span></li>
-              </ul>
-            </article>
-            <article class="stack-group">
-              <h3 class="stack-group-title">Data</h3>
-              <ul class="stack-list">
-                <li class="stack-item" data-used="kolektor residar expenselog"><span class="stack-tech">PostgreSQL</span><span class="stack-contexts"><span>Kolektor</span><span>ResidAR</span><span>ExpenseLog</span></span></li>
-                <li class="stack-item" data-used="residar"><span class="stack-tech">Prisma</span><span class="stack-contexts"><span>ResidAR</span></span></li>
-              </ul>
-            </article>
-            <article class="stack-group">
-              <h3 class="stack-group-title">Infrastructure</h3>
-              <ul class="stack-list">
-                <li class="stack-item" data-used="residar expenselog homelab"><span class="stack-tech">Docker</span><span class="stack-contexts"><span>ResidAR</span><span>ExpenseLog</span><span>Homelab</span></span></li>
-                <li class="stack-item" data-used="homelab"><span class="stack-tech">Linux / Debian</span><span class="stack-contexts"><span>Homelab</span></span></li>
-                <li class="stack-item" data-used="homelab"><span class="stack-tech">Proxmox</span><span class="stack-contexts"><span>Homelab</span></span></li>
-                <li class="stack-item" data-used="homelab"><span class="stack-tech">Cloudflare</span><span class="stack-contexts"><span>Homelab</span></span></li>
-              </ul>
-            </article>
-            <article class="stack-group">
-              <h3 class="stack-group-title">Engineering</h3>
-              <ul class="stack-list">
-                <li class="stack-item" data-used="kolektor"><span class="stack-tech">BPMN</span><span class="stack-contexts"><span>Kolektor</span></span></li>
-                <li class="stack-item" data-used="kolektor"><span class="stack-tech">CIB Seven</span><span class="stack-contexts"><span>Kolektor</span></span></li>
-                <li class="stack-item" data-used="kolektor"><span class="stack-tech">Testing</span><span class="stack-contexts"><span>Kolektor</span></span></li>
-              </ul>
-            </article>
-            <article class="stack-group">
-              <h3 class="stack-group-title">Frontend</h3>
-              <ul class="stack-list">
-                <li class="stack-item" data-used="residar"><span class="stack-tech">Next.js</span><span class="stack-contexts"><span>ResidAR</span></span></li>
-                <li class="stack-item" data-used="expenselog"><span class="stack-tech">JavaScript</span><span class="stack-contexts"><span>ExpenseLog</span></span></li>
-              </ul>
-            </article>
-          </div>
-          <!-- TODO: Confirm usage contexts for Node.js, SQL, Git, CI/CD, React and AI-assisted workflows. -->
         </div>
       </section>
+      <!-- STACK:END -->
 
       <!-- Contact Section -->
       <section id="contact" class="section contact-section">
