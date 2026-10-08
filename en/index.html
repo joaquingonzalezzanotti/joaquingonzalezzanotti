@@ -344,7 +344,7 @@
                   <span class="project-repository-private" aria-label="Private repository" title="Private repository"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="11" x="5" y="11" rx="2" ry="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg><span>Private</span></span>
                   <span class="project-card-badge">Final project · UTN</span>
                   <h3 class="project-card-title">ResidAR</h3>
-                  <p class="project-card-desc">A management system for elderly-care residences developed with a team as my final project. I work across APIs, permissions, data, testing, and technical documentation.</p>
+                  <p class="project-card-desc">A management platform for elderly-care residences built as a capstone project. I served as Scrum Master and backend developer, and owned the design and implementation of its infrastructure, CI/CD pipelines, and deployments.</p>
                   <div class="project-card-stack">
                     <span class="chip">NestJS</span>
                     <span class="chip">Next.js</span>
@@ -352,6 +352,7 @@
                     <span class="chip">PostgreSQL</span>
                     <span class="chip">Prisma</span>
                     <span class="chip">Docker</span>
+                    <span class="chip">CI/CD</span>
                   </div>
                 </div>
               </article>
@@ -453,66 +454,83 @@
                 <button type="button" class="stack-filter" data-stack-filter="kolektor" data-stack-summary="Business processes, backend, and data integration." aria-pressed="false">Kolektor</button>
                 <button type="button" class="stack-filter" data-stack-filter="residar" data-stack-summary="Web product, API, and persistence for operational management." aria-pressed="false">ResidAR</button>
                 <button type="button" class="stack-filter" data-stack-filter="expenselog" data-stack-summary="A Go service for tracking and analyzing personal finances." aria-pressed="false">ExpenseLog</button>
+                <button type="button" class="stack-filter" data-stack-filter="domotica" data-stack-summary="Local automation with sensors, protocols, and integrations built around Home Assistant." aria-pressed="false">Home automation</button>
                 <button type="button" class="stack-filter" data-stack-filter="homelab" data-stack-summary="Self-hosted infrastructure: virtualization, containers, and networking." aria-pressed="false">Homelab</button>
               </div>
             </div>
             <div class="stack-map" style="--stack-layer-count: 4">
-              <article class="stack-layer" data-used="residar expenselog">
+              <article class="stack-layer" data-used="residar expenselog domotica">
                 <div class="stack-layer-heading">
                   <span class="stack-layer-index" aria-hidden="true">01</span>
                   <h3>Product and interface</h3>
                 </div>
                 <div class="stack-nodes">
                   <div class="stack-node" data-used="residar">
-                    <span class="stack-node-mark" aria-hidden="true">NX</span>
+                    <span class="stack-node-mark" aria-hidden="true"><img src="/assets/icons/stack/nextdotjs.svg" alt=""></span>
                     <span class="stack-node-name">Next.js</span>
                   </div>
+                  <div class="stack-node" data-used="residar">
+                    <span class="stack-node-mark" aria-hidden="true"><img src="/assets/icons/stack/tailwindcss.svg" alt=""></span>
+                    <span class="stack-node-name">Tailwind CSS</span>
+                  </div>
+                  <div class="stack-node" data-used="residar">
+                    <span class="stack-node-mark" aria-hidden="true">ZS</span>
+                    <span class="stack-node-name">Zustand</span>
+                  </div>
                   <div class="stack-node" data-used="expenselog">
-                    <span class="stack-node-mark" aria-hidden="true">JS</span>
+                    <span class="stack-node-mark" aria-hidden="true"><img src="/assets/icons/stack/javascript.svg" alt=""></span>
                     <span class="stack-node-name">JavaScript</span>
+                  </div>
+                  <div class="stack-node" data-used="domotica">
+                    <span class="stack-node-mark" aria-hidden="true"><img src="/assets/icons/stack/homeassistant.svg" alt=""></span>
+                    <span class="stack-node-name">Home Assistant</span>
                   </div>
                 </div>
               </article>
-              <article class="stack-layer" data-used="kolektor residar expenselog">
+              <article class="stack-layer" data-used="kolektor residar expenselog domotica">
                 <div class="stack-layer-heading">
                   <span class="stack-layer-index" aria-hidden="true">02</span>
                   <h3>Backend</h3>
                 </div>
                 <div class="stack-nodes">
                   <div class="stack-node" data-used="kolektor residar">
-                    <span class="stack-node-mark" aria-hidden="true">NS</span>
+                    <span class="stack-node-mark" aria-hidden="true"><img src="/assets/icons/stack/nestjs.svg" alt=""></span>
                     <span class="stack-node-name">NestJS</span>
                   </div>
                   <div class="stack-node" data-used="kolektor residar">
-                    <span class="stack-node-mark" aria-hidden="true">TS</span>
+                    <span class="stack-node-mark" aria-hidden="true"><img src="/assets/icons/stack/typescript.svg" alt=""></span>
                     <span class="stack-node-name">TypeScript</span>
                   </div>
                   <div class="stack-node" data-used="expenselog">
-                    <span class="stack-node-mark" aria-hidden="true">GO</span>
+                    <span class="stack-node-mark" aria-hidden="true"><img src="/assets/icons/stack/go.svg" alt=""></span>
                     <span class="stack-node-name">Go</span>
                   </div>
-                  <div class="stack-node" data-used="kolektor">
-                    <span class="stack-node-mark" aria-hidden="true">PY</span>
+                  <div class="stack-node" data-used="kolektor domotica">
+                    <span class="stack-node-mark" aria-hidden="true"><img src="/assets/icons/stack/python.svg" alt=""></span>
                     <span class="stack-node-name">Python</span>
                   </div>
+                  <div class="stack-node" data-used="domotica">
+                    <span class="stack-node-mark" aria-hidden="true"><img src="/assets/icons/stack/nodered.svg" alt=""></span>
+                    <span class="stack-node-name">Node-RED</span>
+                  </div>
                   <div class="stack-node" data-used="kolektor">
-                    <span class="stack-node-mark" aria-hidden="true">QA</span>
-                    <span class="stack-node-name">Testing</span>
+                    <span class="stack-node-mark" aria-hidden="true"><img src="/assets/icons/stack/jest.svg" alt=""></span>
+                    <span class="stack-node-name">Jest</span>
                   </div>
                 </div>
               </article>
-              <article class="stack-layer" data-used="kolektor residar expenselog">
+              <article class="stack-layer" data-used="kolektor residar expenselog domotica">
                 <div class="stack-layer-heading">
                   <span class="stack-layer-index" aria-hidden="true">03</span>
-                  <h3>Data and processes</h3>
+                  <h3>Data, processes, and integration</h3>
                 </div>
                 <div class="stack-nodes">
                   <div class="stack-node" data-used="kolektor residar expenselog">
-                    <span class="stack-node-mark" aria-hidden="true">PG</span>
+                    <span class="stack-node-mark" aria-hidden="true"><img src="/assets/icons/stack/postgresql.svg" alt=""></span>
                     <span class="stack-node-name">PostgreSQL</span>
                   </div>
                   <div class="stack-node" data-used="residar">
-                    <span class="stack-node-mark" aria-hidden="true">PR</span>
+                    <span class="stack-node-mark" aria-hidden="true"><img src="/assets/icons/stack/prisma.svg" alt=""></span>
                     <span class="stack-node-name">Prisma</span>
                   </div>
                   <div class="stack-node" data-used="kolektor">
@@ -523,28 +541,44 @@
                     <span class="stack-node-mark" aria-hidden="true">C7</span>
                     <span class="stack-node-name">CIB Seven</span>
                   </div>
+                  <div class="stack-node" data-used="domotica">
+                    <span class="stack-node-mark" aria-hidden="true"><img src="/assets/icons/stack/mqtt.svg" alt=""></span>
+                    <span class="stack-node-name">MQTT</span>
+                  </div>
+                  <div class="stack-node" data-used="domotica">
+                    <span class="stack-node-mark" aria-hidden="true"><img src="/assets/icons/stack/zigbee.svg" alt=""></span>
+                    <span class="stack-node-name">Zigbee</span>
+                  </div>
                 </div>
               </article>
-              <article class="stack-layer" data-used="residar expenselog homelab">
+              <article class="stack-layer" data-used="kolektor residar expenselog homelab domotica">
                 <div class="stack-layer-heading">
                   <span class="stack-layer-index" aria-hidden="true">04</span>
                   <h3>Operations</h3>
                 </div>
                 <div class="stack-nodes">
-                  <div class="stack-node" data-used="residar expenselog homelab">
-                    <span class="stack-node-mark" aria-hidden="true">DK</span>
+                  <div class="stack-node" data-used="kolektor residar expenselog homelab domotica">
+                    <span class="stack-node-mark" aria-hidden="true"><img src="/assets/icons/stack/docker.svg" alt=""></span>
                     <span class="stack-node-name">Docker</span>
                   </div>
+                  <div class="stack-node" data-used="kolektor">
+                    <span class="stack-node-mark" aria-hidden="true">HR</span>
+                    <span class="stack-node-name">Harness</span>
+                  </div>
+                  <div class="stack-node" data-used="residar expenselog">
+                    <span class="stack-node-mark" aria-hidden="true"><img src="/assets/icons/stack/githubactions.svg" alt=""></span>
+                    <span class="stack-node-name">GitHub Actions</span>
+                  </div>
                   <div class="stack-node" data-used="homelab">
-                    <span class="stack-node-mark" aria-hidden="true">LX</span>
+                    <span class="stack-node-mark" aria-hidden="true"><img src="/assets/icons/stack/linux.svg" alt=""></span>
                     <span class="stack-node-name">Linux / Debian</span>
                   </div>
                   <div class="stack-node" data-used="homelab">
-                    <span class="stack-node-mark" aria-hidden="true">PX</span>
+                    <span class="stack-node-mark" aria-hidden="true"><img src="/assets/icons/stack/proxmox.svg" alt=""></span>
                     <span class="stack-node-name">Proxmox</span>
                   </div>
                   <div class="stack-node" data-used="homelab">
-                    <span class="stack-node-mark" aria-hidden="true">CF</span>
+                    <span class="stack-node-mark" aria-hidden="true"><img src="/assets/icons/stack/cloudflare.svg" alt=""></span>
                     <span class="stack-node-name">Cloudflare</span>
                   </div>
                 </div>

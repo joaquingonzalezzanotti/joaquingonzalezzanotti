@@ -959,6 +959,13 @@ p {
   transition: color var(--transition), border-color var(--transition), background-color var(--transition);
 }
 
+.stack-node-mark img {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  object-fit: contain;
+}
+
 .stack-node-name {
   min-width: 0;
   color: #e2e8f0;
@@ -1352,16 +1359,12 @@ body.modal-open {
   }
 
   .stack-map {
-    grid-template-columns: 1fr;
-    gap: 2.25rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.25rem 2rem;
   }
 
   .stack-layer:not(:last-child)::after {
-    content: "↓";
-    top: auto;
-    right: 50%;
-    bottom: -1.65rem;
-    transform: translateX(50%);
+    display: none;
   }
 
 }
@@ -1414,6 +1417,11 @@ body.modal-open {
 
   .focus-grid {
     grid-template-columns: 1fr;
+  }
+
+  .stack-map {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
   }
 
   .currently-header {
