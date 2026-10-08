@@ -188,6 +188,85 @@
       });
     }
 
+    const contactDialog = document.querySelector("[data-contact-dialog]");
+
+    if (contactDialog && typeof contactDialog.showModal === "function") {
+      const contactOpeners = document.querySelectorAll("[data-contact-modal-open]");
+      const contactCloseButton = contactDialog.querySelector("[data-contact-modal-close]");
+      const contactForm = contactDialog.querySelector("[data-contact-form]");
+      const contactStatus = contactDialog.querySelector("[data-contact-form-status]");
+      const contactSubmitButton = contactDialog.querySelector("[data-contact-submit]");
+      let lastContactOpener = null;
+
+      function openContactDialog(event) {
+        event.preventDefault();
+        lastContactOpener = event.currentTarget;
+
+        if (contactStatus) {
+          contactStatus.textContent = "";
+          contactStatus.removeAttribute("data-state");
+        }
+
+        contactDialog.showModal();
+        document.body.classList.add("modal-open");
+
+        const firstField = contactDialog.querySelector('input[name="name"]');
+        if (firstField) window.setTimeout(function () { firstField.focus(); }, 0);
+      }
+
+      contactOpeners.forEach(function (opener) {
+        opener.addEventListener("click", openContactDialog);
+      });
+
+      if (contactCloseButton) {
+        contactCloseButton.addEventListener("click", function () {
+          contactDialog.close();
+        });
+      }
+
+      contactDialog.addEventListener("click", function (event) {
+        if (event.target === contactDialog) contactDialog.close();
+      });
+
+      contactDialog.addEventListener("close", function () {
+        document.body.classList.remove("modal-open");
+        if (lastContactOpener) lastContactOpener.focus();
+      });
+
+      if (contactForm && contactStatus && contactSubmitButton) {
+        contactForm.addEventListener("submit", async function (event) {
+          event.preventDefault();
+          if (!contactForm.reportValidity()) return;
+
+          const originalSubmitLabel = contactSubmitButton.textContent;
+          contactSubmitButton.disabled = true;
+          contactSubmitButton.textContent = contactForm.getAttribute("data-sending-label");
+          contactStatus.textContent = "";
+          contactStatus.removeAttribute("data-state");
+
+          try {
+            const response = await fetch(contactForm.action, {
+              method: "POST",
+              body: new FormData(contactForm),
+              headers: { Accept: "application/json" },
+            });
+
+            if (!response.ok) throw new Error("Contact form request failed");
+
+            contactForm.reset();
+            contactStatus.textContent = contactForm.getAttribute("data-success-message");
+            contactStatus.setAttribute("data-state", "success");
+          } catch (error) {
+            contactStatus.textContent = contactForm.getAttribute("data-error-message");
+            contactStatus.setAttribute("data-state", "error");
+          } finally {
+            contactSubmitButton.disabled = false;
+            contactSubmitButton.textContent = originalSubmitLabel;
+          }
+        });
+      }
+    }
+
     const copyButtons = document.querySelectorAll("[data-copy-email]");
 
     function fallbackCopy(text) {

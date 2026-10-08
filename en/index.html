@@ -202,7 +202,7 @@
               <a href="https://www.linkedin.com/in/joaquin-gonzalez-zanotti/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
                 <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
               </a>
-              <a href="mailto:joaquingzzz79@gmail.com" aria-label="Send email" title="Email">
+              <a href="mailto:joaquingzzz79@gmail.com" data-contact-modal-open aria-label="Open contact form" title="Email">
                 <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-10 5L2 7"></path></svg>
               </a>
             </div>
@@ -219,8 +219,7 @@
           <article class="currently-card">
             <div class="currently-header">
               <div>
-                <h3 class="currently-role-title">Backend Developer</h3>
-                <p class="currently-company">Kolektor</p>
+                <h3 class="currently-role-title currently-role-title-inline">Backend Developer @ Kolektor</h3>
               </div>
               <span class="badge-status">
                 <span class="status-dot"></span>
@@ -568,7 +567,7 @@
               <li class="contact-row">
                 <span class="contact-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-10 5L2 7"></path></svg></span>
                 <span class="contact-main"><span class="contact-label">Email</span><span class="contact-value">joaquingzzz79@gmail.com</span></span>
-                <a class="contact-row-link" href="mailto:joaquingzzz79@gmail.com" aria-label="Email joaquingzzz79@gmail.com"></a>
+                <a class="contact-row-link" href="mailto:joaquingzzz79@gmail.com" data-contact-modal-open aria-label="Open contact form"></a>
                 <button type="button" class="contact-copy-button" data-copy-email="joaquingzzz79@gmail.com" data-copy-label="Copy" data-copied-label="Copied ✓" aria-label="Copy email" hidden><span data-copy-status aria-live="polite">Copy</span></button>
               </li>
               <li class="contact-row">
@@ -594,6 +593,51 @@
         </div>
       </section>
     </main>
+
+    <dialog class="contact-dialog" data-contact-dialog aria-labelledby="contact-dialog-title" aria-describedby="contact-dialog-description">
+      <div class="contact-dialog-panel">
+        <div class="contact-dialog-header">
+          <div>
+            <p class="contact-dialog-eyebrow">Direct contact</p>
+            <h2 id="contact-dialog-title">Send me a message</h2>
+            <p id="contact-dialog-description">Tell me briefly what you need and I’ll reply by email.</p>
+          </div>
+          <button type="button" class="contact-dialog-close" data-contact-modal-close aria-label="Close contact form">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+          </button>
+        </div>
+        <form
+          class="contact-form"
+          action="https://formspree.io/f/mkoogrok"
+          method="POST"
+          data-contact-form
+          data-sending-label="Sending…"
+          data-success-message="Message sent. Thank you — I’ll get back to you soon."
+          data-error-message="The message could not be sent. Try again or email me at joaquingzzz79@gmail.com."
+        >
+          <input type="hidden" name="_subject" value="New contact from joaquingz.com.ar" />
+          <label class="contact-form-honeypot" aria-hidden="true" inert>Leave empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>
+          <div class="contact-form-grid">
+            <label class="contact-form-field">
+              <span>Name</span>
+              <input type="text" name="name" autocomplete="name" required placeholder="Your name" />
+            </label>
+            <label class="contact-form-field">
+              <span>Email</span>
+              <input type="email" name="email" autocomplete="email" required placeholder="you@email.com" />
+            </label>
+          </div>
+          <label class="contact-form-field">
+            <span>Message</span>
+            <textarea name="message" rows="5" required placeholder="How can I help?"></textarea>
+          </label>
+          <div class="contact-form-footer">
+            <p class="contact-form-status" data-contact-form-status aria-live="polite"></p>
+            <button type="submit" class="btn btn-primary" data-contact-submit>Send message</button>
+          </div>
+        </form>
+      </div>
+    </dialog>
 
     <!-- Footer -->
     <footer class="site-footer">
