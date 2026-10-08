@@ -27,6 +27,14 @@
     "statusDefaultTemplate": {
       "es": "{total} proyectos",
       "en": "{total} projects"
+    },
+    "privateRepositoryLabel": {
+      "es": "Repositorio privado",
+      "en": "Private repository"
+    },
+    "privateRepositoryShortLabel": {
+      "es": "Privado",
+      "en": "Private"
     }
   },
   "projects": [
@@ -81,11 +89,7 @@
         "es": "Abrir el sitio de ResidAR",
         "en": "Open the ResidAR website"
       },
-      "githubUrl": "https://github.com/joaquingonzalezzanotti/residAR",
-      "githubLabel": {
-        "es": "Ver ResidAR en GitHub",
-        "en": "View ResidAR on GitHub"
-      },
+      "repositoryPrivate": true,
       "stack": ["NestJS", "Next.js", "TypeScript", "PostgreSQL", "Prisma", "Docker"]
     },
     {
@@ -105,16 +109,7 @@
         "es": "Rack de servidores y estación de monitoreo de infraestructura",
         "en": "Server rack and infrastructure monitoring workstation"
       },
-      "primaryUrl": "https://github.com/joaquingonzalezzanotti",
-      "primaryLabel": {
-        "es": "Explorar mi trabajo de infraestructura en GitHub",
-        "en": "Explore my infrastructure work on GitHub"
-      },
-      "githubUrl": "https://github.com/joaquingonzalezzanotti",
-      "githubLabel": {
-        "es": "Abrir mi perfil de GitHub",
-        "en": "Open my GitHub profile"
-      },
+      "repositoryPrivate": true,
       "stack": ["Proxmox", "Debian", "Docker", "Cloudflare", "Monitoring"]
     },
     {
@@ -134,16 +129,7 @@
         "es": "Panel de Home Assistant con dispositivos, luces y estados del hogar",
         "en": "Home Assistant dashboard with devices, lights, and home states"
       },
-      "primaryUrl": "https://github.com/joaquingonzalezzanotti",
-      "primaryLabel": {
-        "es": "Explorar mis automatizaciones en GitHub",
-        "en": "Explore my automations on GitHub"
-      },
-      "githubUrl": "https://github.com/joaquingonzalezzanotti",
-      "githubLabel": {
-        "es": "Abrir mi perfil de GitHub",
-        "en": "Open my GitHub profile"
-      },
+      "repositoryPrivate": true,
       "stack": ["Home Assistant", "YAML", "MQTT", "ESPHome", "Zigbee", "Docker"]
     },
     {
@@ -168,10 +154,10 @@
         "es": "Abrir la aplicación Sorty",
         "en": "Open the Sorty application"
       },
-      "githubUrl": "https://github.com/joaquingonzalezzanotti",
+      "githubUrl": "https://github.com/joaquingonzalezzanotti/Sorty",
       "githubLabel": {
-        "es": "Abrir mi perfil de GitHub",
-        "en": "Open my GitHub profile"
+        "es": "Ver Sorty en GitHub",
+        "en": "View Sorty on GitHub"
       },
       "stack": ["JavaScript", "Python", "PostgreSQL", "Vercel"]
     },
@@ -195,15 +181,15 @@
         "es": "Panel conceptual de automatización con pipeline, agentes y bot de Telegram",
         "en": "Conceptual automation dashboard with a pipeline, agents, and a Telegram bot"
       },
-      "primaryUrl": "https://github.com/joaquingonzalezzanotti",
+      "primaryUrl": "https://github.com/joaquingonzalezzanotti/A4.5",
       "primaryLabel": {
-        "es": "Explorar mi trabajo de automatización en GitHub",
-        "en": "Explore my automation work on GitHub"
+        "es": "Abrir A4.5, un ejemplo público de automatización",
+        "en": "Open A4.5, a public automation example"
       },
-      "githubUrl": "https://github.com/joaquingonzalezzanotti",
+      "githubUrl": "https://github.com/joaquingonzalezzanotti/A4.5",
       "githubLabel": {
-        "es": "Abrir mi perfil de GitHub",
-        "en": "Open my GitHub profile"
+        "es": "Ver A4.5 en GitHub",
+        "en": "View A4.5 on GitHub"
       },
       "stack": ["CI/CD", "Docker", "Agents", "Telegram", "Webhooks", "Automation"]
     }

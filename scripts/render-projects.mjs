@@ -16,6 +16,22 @@ if (projectIds.size !== data.projects.length) {
 for (const project of data.projects) {
   const localImagePath = resolve(projectRoot, project.image.replace(/^\//, ""));
   await access(localImagePath);
+
+  if (project.githubUrl && project.repositoryPrivate) {
+    throw new Error(`${project.id} cannot have both a public GitHub URL and a private repository state.`);
+  }
+
+  if (!project.githubUrl && !project.repositoryPrivate) {
+    throw new Error(`${project.id} must declare either a public GitHub URL or a private repository state.`);
+  }
+
+  if (project.primaryUrl && !project.primaryLabel) {
+    throw new Error(`${project.id} is missing its primary link label.`);
+  }
+
+  if (project.githubUrl && !project.githubLabel) {
+    throw new Error(`${project.id} is missing its GitHub link label.`);
+  }
 }
 
 function escapeHtml(value) {
@@ -33,25 +49,45 @@ function localized(value, language) {
 
 const githubIcon = '<svg class="github-icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7A5.4 5.4 0 0 0 19.4 4 5 5 0 0 0 19.3.5S18.2.1 15 1.8a13.4 13.4 0 0 0-7 0C4.8.1 3.7.5 3.7.5A5 5 0 0 0 3.6 4a5.4 5.4 0 0 0-1.4 3.5c0 5.4 3.5 6.6 6.8 7A4.8 4.8 0 0 0 8 18v4"></path><path d="M8 19c-3 .9-3-1.5-4-2"></path></svg>';
 const arrowIcon = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>';
+const lockIcon = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="11" x="5" y="11" rx="2" ry="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>';
 const previousIcon = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>';
 const nextIcon = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>';
 
 function renderCard(project, language) {
   const title = localized(project.title, language);
   const positionClass = project.imagePosition === "center" ? " project-card-media-center" : "";
+  const cardClasses = ["project-card-v2"];
+
+  if (project.primaryUrl) cardClasses.push("project-card-linked");
+  if (project.repositoryPrivate) cardClasses.push("project-card-private");
+
   const lines = [
-    '              <article class="project-card-v2 project-card-linked">',
-    `                <a href="${escapeHtml(project.primaryUrl)}" class="project-card-primary-link" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(project.primaryLabel[language])}"></a>`,
+    `              <article class="${cardClasses.join(" ")}">`,
+  ];
+
+  if (project.primaryUrl) {
+    lines.push(`                <a href="${escapeHtml(project.primaryUrl)}" class="project-card-primary-link" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(project.primaryLabel[language])}"></a>`);
+  }
+
+  lines.push(
     `                <div class="project-card-media${positionClass}">`,
     `                  <img src="${escapeHtml(project.image)}" alt="${escapeHtml(project.alt[language])}" loading="lazy" decoding="async" width="800" height="450" />`,
     "                </div>",
     '                <div class="project-card-content">',
-    `                  <a href="${escapeHtml(project.githubUrl)}" class="project-github-link" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(project.githubLabel[language])}">${githubIcon}${arrowIcon}</a>`,
+  );
+
+  if (project.githubUrl) {
+    lines.push(`                  <a href="${escapeHtml(project.githubUrl)}" class="project-github-link" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(project.githubLabel[language])}">${githubIcon}${arrowIcon}</a>`);
+  } else if (project.repositoryPrivate) {
+    lines.push(`                  <span class="project-repository-private" aria-label="${escapeHtml(data.section.privateRepositoryLabel[language])}" title="${escapeHtml(data.section.privateRepositoryLabel[language])}">${lockIcon}<span>${escapeHtml(data.section.privateRepositoryShortLabel[language])}</span></span>`);
+  }
+
+  lines.push(
     `                  <span class="project-card-badge">${escapeHtml(project.badge[language])}</span>`,
     `                  <h3 class="project-card-title">${escapeHtml(title)}</h3>`,
     `                  <p class="project-card-desc">${escapeHtml(project.description[language])}</p>`,
     '                  <div class="project-card-stack">',
-  ];
+  );
 
   for (const technology of project.stack) {
     lines.push(`                    <span class="chip">${escapeHtml(technology)}</span>`);
