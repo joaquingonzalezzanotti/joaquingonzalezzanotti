@@ -38,7 +38,7 @@
   --shadow-card: 0 4px 12px -2px rgba(15, 23, 42, 0.04);
   --shadow-hover: 0 8px 20px -4px rgba(15, 23, 42, 0.08);
 
-  --max-width: 1080px;
+  --max-width: 1200px;
   --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -154,7 +154,7 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.85rem;
+  width: 2.2rem;
   height: 1.85rem;
   background-color: var(--color-text-primary);
   color: #ffffff;
@@ -299,15 +299,15 @@ p {
 
 /* Hero Section */
 .hero {
-  padding-top: 3rem;
-  padding-bottom: 2.5rem;
+  padding-top: 2.5rem;
+  padding-bottom: 1rem;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(320px, 2fr);
-  align-items: start;
-  gap: 2rem;
+  grid-template-columns: minmax(0, 1fr) minmax(500px, 1fr);
+  align-items: stretch;
+  gap: 2.5rem;
 }
 
 .hero-copy {
@@ -369,32 +369,36 @@ p {
 }
 
 .profile-card {
+  display: flex;
+  flex-direction: column;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: 1.5rem;
+  padding: 1.25rem;
   box-shadow: var(--shadow-card);
 }
 
-.profile-monogram {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 3rem;
-  height: 3rem;
+.profile-intro {
+  display: grid;
+  grid-template-columns: 5.25rem minmax(0, 1fr);
+  align-items: start;
+  gap: 1rem;
   margin-bottom: 1rem;
+}
+
+.profile-photo {
+  display: block;
+  width: 5.25rem;
+  height: 5.25rem;
+  object-fit: cover;
   border-radius: var(--radius-md);
-  background-color: var(--color-text-primary);
-  color: var(--color-surface);
-  font-size: 0.95rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  border: 1px solid var(--color-border);
 }
 
 .profile-summary {
-  font-size: 0.9rem;
-  line-height: 1.55;
-  margin-bottom: 1.15rem;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  margin-bottom: 0;
 }
 
 .profile-details {
@@ -404,9 +408,9 @@ p {
 
 .profile-detail-row {
   display: grid;
-  grid-template-columns: minmax(7.25rem, max-content) minmax(0, 1fr);
+  grid-template-columns: minmax(7.75rem, max-content) minmax(0, 1fr);
   gap: 1rem;
-  padding: 0.72rem 0;
+  padding: 0.58rem 0;
   border-bottom: 1px solid var(--color-border-subtle);
 }
 
@@ -431,7 +435,7 @@ p {
 .profile-links {
   display: flex;
   gap: 0.6rem;
-  padding-top: 1rem;
+  padding-top: 0.85rem;
 }
 
 .profile-links a {
@@ -1303,7 +1307,7 @@ body.modal-open {
 }
 
 /* Responsive Media Queries */
-@media (max-width: 992px) {
+@media (max-width: 1080px) {
   .hero-grid {
     grid-template-columns: 1fr;
   }
@@ -1311,6 +1315,9 @@ body.modal-open {
   .hero-copy {
     padding-top: 0;
   }
+}
+
+@media (max-width: 992px) {
 
   .focus-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1409,6 +1416,16 @@ body.modal-open {
   .profile-detail-row {
     grid-template-columns: 1fr;
     gap: 0.2rem;
+  }
+
+  .profile-intro {
+    grid-template-columns: 4.25rem minmax(0, 1fr);
+    gap: 0.85rem;
+  }
+
+  .profile-photo {
+    width: 4.25rem;
+    height: 4.25rem;
   }
 
   .currently-role-title-inline {
