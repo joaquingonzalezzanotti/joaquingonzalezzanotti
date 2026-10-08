@@ -1,0 +1,211 @@
+{
+  "section": {
+    "title": {
+      "es": "Proyectos seleccionados",
+      "en": "Selected projects"
+    },
+    "subtitle": {
+      "es": "Producto, backend, infraestructura y automatización aplicados en sistemas que construí y opero.",
+      "en": "Product, backend, infrastructure, and automation applied across systems I build and operate."
+    },
+    "carouselLabel": {
+      "es": "Carrusel de proyectos seleccionados",
+      "en": "Selected projects carousel"
+    },
+    "previousLabel": {
+      "es": "Ver proyectos anteriores",
+      "en": "View previous projects"
+    },
+    "nextLabel": {
+      "es": "Ver proyectos siguientes",
+      "en": "View next projects"
+    },
+    "statusTemplate": {
+      "es": "{start}–{end} de {total}",
+      "en": "{start}–{end} of {total}"
+    },
+    "statusDefaultTemplate": {
+      "es": "{total} proyectos",
+      "en": "{total} projects"
+    }
+  },
+  "projects": [
+    {
+      "id": "expenselog",
+      "title": "ExpenseLog",
+      "badge": {
+        "es": "Proyecto personal",
+        "en": "Personal project"
+      },
+      "description": {
+        "es": "Aplicación de finanzas personales que uso para registrar gastos, saldos y actividad mensual. Es también mi laboratorio para backend, integraciones, bots y despliegue.",
+        "en": "A personal finance application I use to track expenses, balances, and monthly activity. It also serves as my lab for backend development, integrations, bots, and deployment."
+      },
+      "image": "/assets/projects/expense-log/cover.png",
+      "imagePosition": "top",
+      "alt": {
+        "es": "Vista previa del panel de ExpenseLog",
+        "en": "ExpenseLog dashboard preview"
+      },
+      "primaryUrl": "https://expenselog.com.ar/",
+      "primaryLabel": {
+        "es": "Abrir el sitio de ExpenseLog",
+        "en": "Open the ExpenseLog website"
+      },
+      "githubUrl": "https://github.com/joaquingonzalezzanotti/ExpenseLog",
+      "githubLabel": {
+        "es": "Ver ExpenseLog en GitHub",
+        "en": "View ExpenseLog on GitHub"
+      },
+      "stack": ["Go", "PostgreSQL", "Docker", "JavaScript", "Telegram", "WhatsApp"]
+    },
+    {
+      "id": "residar",
+      "title": "ResidAR",
+      "badge": {
+        "es": "Proyecto Final · UTN",
+        "en": "Final project · UTN"
+      },
+      "description": {
+        "es": "Sistema de gestión para residencias de adultos mayores desarrollado en equipo como Proyecto Final. Trabajo sobre APIs, permisos, datos, testing y documentación técnica.",
+        "en": "A management system for elderly-care residences developed with a team as my final project. I work across APIs, permissions, data, testing, and technical documentation."
+      },
+      "image": "/assets/projects/residar/dashboard.webp",
+      "imagePosition": "top",
+      "alt": {
+        "es": "Página de ResidAR con una vista de su panel de gestión",
+        "en": "ResidAR page featuring its management dashboard"
+      },
+      "primaryUrl": "https://residar.com.ar",
+      "primaryLabel": {
+        "es": "Abrir el sitio de ResidAR",
+        "en": "Open the ResidAR website"
+      },
+      "githubUrl": "https://github.com/joaquingonzalezzanotti/residAR",
+      "githubLabel": {
+        "es": "Ver ResidAR en GitHub",
+        "en": "View ResidAR on GitHub"
+      },
+      "stack": ["NestJS", "Next.js", "TypeScript", "PostgreSQL", "Prisma", "Docker"]
+    },
+    {
+      "id": "homelab",
+      "title": "Homelab",
+      "badge": {
+        "es": "Infraestructura personal",
+        "en": "Personal infrastructure"
+      },
+      "description": {
+        "es": "Infraestructura propia para operar servicios, experimentar y aprender con virtualización, Linux, contenedores, redes, monitoreo, backups y acceso remoto seguro.",
+        "en": "Self-hosted infrastructure where I run services and experiment with virtualization, Linux, containers, networking, monitoring, backups, and secure remote access."
+      },
+      "image": "/assets/projects/homelab/cover.webp",
+      "imagePosition": "center",
+      "alt": {
+        "es": "Rack de servidores y estación de monitoreo de infraestructura",
+        "en": "Server rack and infrastructure monitoring workstation"
+      },
+      "primaryUrl": "https://github.com/joaquingonzalezzanotti",
+      "primaryLabel": {
+        "es": "Explorar mi trabajo de infraestructura en GitHub",
+        "en": "Explore my infrastructure work on GitHub"
+      },
+      "githubUrl": "https://github.com/joaquingonzalezzanotti",
+      "githubLabel": {
+        "es": "Abrir mi perfil de GitHub",
+        "en": "Open my GitHub profile"
+      },
+      "stack": ["Proxmox", "Debian", "Docker", "Cloudflare", "Monitoring"]
+    },
+    {
+      "id": "home-assistant",
+      "title": "Home Assistant & IoT",
+      "badge": {
+        "es": "Domótica local",
+        "en": "Local home automation"
+      },
+      "description": {
+        "es": "Sistema domótico centralizado con sensores, escenas e integraciones locales. Automatiza iluminación, seguridad y rutinas según presencia, horarios y estado del hogar.",
+        "en": "A centralized home automation system with sensors, scenes, and local integrations. It automates lighting, security, and routines based on presence, schedules, and home state."
+      },
+      "image": "/assets/projects/home-assistant/cover.webp",
+      "imagePosition": "center",
+      "alt": {
+        "es": "Panel de Home Assistant con dispositivos, luces y estados del hogar",
+        "en": "Home Assistant dashboard with devices, lights, and home states"
+      },
+      "primaryUrl": "https://github.com/joaquingonzalezzanotti",
+      "primaryLabel": {
+        "es": "Explorar mis automatizaciones en GitHub",
+        "en": "Explore my automations on GitHub"
+      },
+      "githubUrl": "https://github.com/joaquingonzalezzanotti",
+      "githubLabel": {
+        "es": "Abrir mi perfil de GitHub",
+        "en": "Open my GitHub profile"
+      },
+      "stack": ["Home Assistant", "YAML", "MQTT", "ESPHome", "Zigbee", "Docker"]
+    },
+    {
+      "id": "sorty",
+      "title": "Sorty",
+      "badge": {
+        "es": "Aplicación web",
+        "en": "Web application"
+      },
+      "description": {
+        "es": "Aplicación para organizar Amigo Invisible con reglas de exclusión, validaciones y un flujo simple para cargar participantes y compartir cada resultado de forma privada.",
+        "en": "A Secret Santa application with exclusion rules, validation, and a simple flow for adding participants and privately sharing each result."
+      },
+      "image": "/assets/projects/sorty/cover.png",
+      "imagePosition": "top",
+      "alt": {
+        "es": "Interfaz de Sorty para configurar participantes y exclusiones",
+        "en": "Sorty interface for configuring participants and exclusions"
+      },
+      "primaryUrl": "https://sorty-neon.vercel.app",
+      "primaryLabel": {
+        "es": "Abrir la aplicación Sorty",
+        "en": "Open the Sorty application"
+      },
+      "githubUrl": "https://github.com/joaquingonzalezzanotti",
+      "githubLabel": {
+        "es": "Abrir mi perfil de GitHub",
+        "en": "Open my GitHub profile"
+      },
+      "stack": ["JavaScript", "Python", "PostgreSQL", "Vercel"]
+    },
+    {
+      "id": "automation-delivery",
+      "title": {
+        "es": "Automatización y entrega",
+        "en": "Automation & Delivery"
+      },
+      "badge": {
+        "es": "Capacidad transversal",
+        "en": "Cross-cutting capability"
+      },
+      "description": {
+        "es": "Flujos que conectan eventos, pruebas, despliegues y operación: pipelines, agentes, tareas programadas, webhooks y bots de Telegram para reducir trabajo manual.",
+        "en": "Workflows connecting events, tests, deployments, and operations: pipelines, agents, scheduled tasks, webhooks, and Telegram bots that reduce manual work."
+      },
+      "image": "/assets/projects/automation-systems/cover.webp",
+      "imagePosition": "center",
+      "alt": {
+        "es": "Panel conceptual de automatización con pipeline, agentes y bot de Telegram",
+        "en": "Conceptual automation dashboard with a pipeline, agents, and a Telegram bot"
+      },
+      "primaryUrl": "https://github.com/joaquingonzalezzanotti",
+      "primaryLabel": {
+        "es": "Explorar mi trabajo de automatización en GitHub",
+        "en": "Explore my automation work on GitHub"
+      },
+      "githubUrl": "https://github.com/joaquingonzalezzanotti",
+      "githubLabel": {
+        "es": "Abrir mi perfil de GitHub",
+        "en": "Open my GitHub profile"
+      },
+      "stack": ["CI/CD", "Docker", "Agents", "Telegram", "Webhooks", "Automation"]
+    }
+  ]
+}

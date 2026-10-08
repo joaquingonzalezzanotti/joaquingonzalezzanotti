@@ -16,11 +16,12 @@ Backend Developer at CIDS / Kolektor. I work mainly with backend development, BP
 
 [Portfolio](https://joaquingz.com.ar) · [LinkedIn](https://linkedin.com/in/joaquin-gonzalez-zanotti)
 
-## Updating the stack
+## Updating generated sections
 
-The stack section is generated for both languages from `assets/data/stack.json`.
-After changing projects, layers, or technologies, run:
+The projects and stack sections are generated for both languages from their respective files in `assets/data/`.
+After changing their content, run:
 
 ```powershell
+node scripts/render-projects.mjs
 node scripts/render-stack.mjs
 ```

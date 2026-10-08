@@ -20,6 +20,94 @@
       });
     }
 
+    const projectCarousels = document.querySelectorAll("[data-projects-carousel]");
+
+    projectCarousels.forEach(function (carousel) {
+      const section = carousel.closest(".projects-section");
+      const track = carousel.querySelector("[data-carousel-track]");
+      const previousButton = section ? section.querySelector("[data-carousel-previous]") : null;
+      const nextButton = section ? section.querySelector("[data-carousel-next]") : null;
+      const status = section ? section.querySelector("[data-carousel-status]") : null;
+      const cards = track ? track.querySelectorAll(".project-card-v2") : [];
+      let updateFrame = null;
+
+      if (!section || !track || !previousButton || !nextButton || !status || !cards.length) return;
+
+      section.classList.add("is-carousel-enhanced");
+
+      function getMetrics() {
+        const styles = window.getComputedStyle(track);
+        const cardsPerView = Math.max(1, Number.parseInt(styles.getPropertyValue("--cards-per-view"), 10) || 1);
+        const gap = Number.parseFloat(styles.columnGap) || 0;
+        const cardWidth = cards[0].getBoundingClientRect().width;
+
+        return { cardsPerView: cardsPerView, step: cardWidth + gap };
+      }
+
+      function updateCarousel() {
+        const metrics = getMetrics();
+        const firstVisibleIndex = Math.min(
+          cards.length - 1,
+          Math.max(0, Math.round(track.scrollLeft / metrics.step)),
+        );
+        const lastVisibleIndex = Math.min(cards.length, firstVisibleIndex + metrics.cardsPerView);
+        const statusTemplate = carousel.getAttribute("data-status-template") || "{start}–{end} / {total}";
+        const atStart = track.scrollLeft <= 2;
+        const atEnd = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
+
+        previousButton.disabled = atStart;
+        nextButton.disabled = atEnd;
+        const nextStatus = statusTemplate
+          .replace("{start}", String(firstVisibleIndex + 1))
+          .replace("{end}", String(lastVisibleIndex))
+          .replace("{total}", String(cards.length));
+
+        if (status.textContent !== nextStatus) status.textContent = nextStatus;
+      }
+
+      function scheduleUpdate() {
+        if (updateFrame !== null) return;
+        updateFrame = window.requestAnimationFrame(function () {
+          updateFrame = null;
+          updateCarousel();
+        });
+      }
+
+      function moveCarousel(direction) {
+        const metrics = getMetrics();
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        track.scrollBy({
+          left: direction * metrics.step * metrics.cardsPerView,
+          behavior: reducedMotion ? "auto" : "smooth",
+        });
+      }
+
+      previousButton.addEventListener("click", function () {
+        moveCarousel(-1);
+      });
+
+      nextButton.addEventListener("click", function () {
+        moveCarousel(1);
+      });
+
+      track.addEventListener("scroll", scheduleUpdate, { passive: true });
+      track.addEventListener("keydown", function (event) {
+        if (event.target === track && (event.key === "ArrowLeft" || event.key === "ArrowRight")) {
+          event.preventDefault();
+          moveCarousel(event.key === "ArrowLeft" ? -1 : 1);
+        }
+      });
+
+      if ("ResizeObserver" in window) {
+        const resizeObserver = new ResizeObserver(scheduleUpdate);
+        resizeObserver.observe(track);
+      } else {
+        window.addEventListener("resize", scheduleUpdate);
+      }
+
+      updateCarousel();
+    });
+
     const stackStage = document.querySelector(".stack-stage");
 
     if (stackStage) {

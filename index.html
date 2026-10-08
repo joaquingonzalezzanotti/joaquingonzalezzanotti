@@ -301,144 +301,144 @@
         </div>
       </section>
 
-      <!-- Selected Projects Section -->
-      <section id="projects" class="section">
+      <!-- PROJECTS:START -->
+      <section id="projects" class="section projects-section">
         <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Proyectos seleccionados</h2>
-            <p class="section-subtitle">Tres proyectos distintos que reflejan cómo trabajo con producto, software e infraestructura.</p>
+          <div class="projects-heading-row">
+            <div class="section-header">
+              <h2 class="section-title">Proyectos seleccionados</h2>
+              <p class="section-subtitle">Producto, backend, infraestructura y automatización aplicados en sistemas que construí y opero.</p>
+            </div>
+            <div class="projects-carousel-controls">
+              <span class="projects-carousel-status" data-carousel-status aria-live="polite">6 proyectos</span>
+              <button type="button" class="projects-carousel-button" data-carousel-previous aria-label="Ver proyectos anteriores"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg></button>
+              <button type="button" class="projects-carousel-button" data-carousel-next aria-label="Ver proyectos siguientes"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></button>
+            </div>
           </div>
-          <div class="projects-grid">
-            <!-- ExpenseLog -->
-            <article class="project-card-v2 project-card-linked">
-              <a
-                href="https://expenselog.com.ar/"
-                class="project-card-primary-link"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Abrir el sitio de ExpenseLog"
-              ></a>
-              <div class="project-card-media">
-                <img
-                  src="/assets/projects/expense-log/cover.png"
-                  alt="Vista previa de ExpenseLog"
-                  loading="lazy"
-                  width="400"
-                  height="220"
-                />
-              </div>
-              <div class="project-card-content">
-                <a
-                  href="https://github.com/joaquingonzalezzanotti/ExpenseLog"
-                  class="project-github-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Ver ExpenseLog en GitHub"
-                >
-                  <svg class="github-icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7A5.4 5.4 0 0 0 19.4 4 5 5 0 0 0 19.3.5S18.2.1 15 1.8a13.4 13.4 0 0 0-7 0C4.8.1 3.7.5 3.7.5A5 5 0 0 0 3.6 4a5.4 5.4 0 0 0-1.4 3.5c0 5.4 3.5 6.6 6.8 7A4.8 4.8 0 0 0 8 18v4"></path><path d="M8 19c-3 .9-3-1.5-4-2"></path></svg>
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
-                </a>
-                <span class="project-card-badge">Proyecto personal</span>
-                <h3 class="project-card-title">ExpenseLog</h3>
-                <p class="project-card-desc">
-                  Aplicación personal de finanzas que uso para registrar gastos, saldos y actividad mensual. También funciona como laboratorio para backend, integraciones y despliegue. Incluye registro de ingresos/egresos, conciliación y bot para Telegram/WhatsApp.
-                </p>
-                <div class="project-card-stack">
-                  <span class="chip">Go</span>
-                  <span class="chip">PostgreSQL</span>
-                  <span class="chip">Docker</span>
-                  <span class="chip">JavaScript</span>
-                  <span class="chip">Telegram</span>
-                  <span class="chip">WhatsApp</span>
+          <div class="projects-carousel" data-projects-carousel data-status-template="{start}–{end} de {total}">
+            <div class="projects-track" data-carousel-track tabindex="0" aria-label="Carrusel de proyectos seleccionados">
+              <article class="project-card-v2 project-card-linked">
+                <a href="https://expenselog.com.ar/" class="project-card-primary-link" target="_blank" rel="noopener noreferrer" aria-label="Abrir el sitio de ExpenseLog"></a>
+                <div class="project-card-media">
+                  <img src="/assets/projects/expense-log/cover.png" alt="Vista previa del panel de ExpenseLog" loading="lazy" decoding="async" width="800" height="450" />
                 </div>
-              </div>
-            </article>
-
-            <!-- ResidAR -->
-            <article class="project-card-v2 project-card-linked">
-              <a
-                href="https://residar.com.ar"
-                class="project-card-primary-link"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Abrir el sitio de ResidAR"
-              ></a>
-              <div class="project-card-media">
-                <img
-                  src="/assets/projects/residar/dashboard.webp"
-                  alt="Página principal de ResidAR con presentación del producto y vista del panel de gestión"
-                  loading="lazy"
-                  width="800"
-                  height="416"
-                />
-              </div>
-              <div class="project-card-content">
-                <a
-                  href="https://github.com/joaquingonzalezzanotti/residAR"
-                  class="project-github-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Ver ResidAR en GitHub"
-                >
-                  <svg class="github-icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7A5.4 5.4 0 0 0 19.4 4 5 5 0 0 0 19.3.5S18.2.1 15 1.8a13.4 13.4 0 0 0-7 0C4.8.1 3.7.5 3.7.5A5 5 0 0 0 3.6 4a5.4 5.4 0 0 0-1.4 3.5c0 5.4 3.5 6.6 6.8 7A4.8 4.8 0 0 0 8 18v4"></path><path d="M8 19c-3 .9-3-1.5-4-2"></path></svg>
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
-                </a>
-                <span class="project-card-badge">Proyecto Final · UTN</span>
-                <h3 class="project-card-title">ResidAR</h3>
-                <p class="project-card-desc">
-                  Sistema de gestión para residencias de adultos mayores desarrollado en equipo como Proyecto Final de Ingeniería en Sistemas. APIs, permisos, modelado relacional, aislamiento por organización, testing y documentación técnica.
-                </p>
-                <div class="project-card-stack">
-                  <span class="chip">NestJS</span>
-                  <span class="chip">Next.js</span>
-                  <span class="chip">TypeScript</span>
-                  <span class="chip">PostgreSQL</span>
-                  <span class="chip">Prisma</span>
-                  <span class="chip">Docker</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Homelab -->
-            <article class="project-card-v2">
-              <!-- TODO: Agregar una URL pública de Homelab antes de convertir esta tarjeta en enlace. -->
-              <div class="project-card-media">
-                <div class="preview-architectural">
-                  <div class="arch-node arch-node-accent">
-                    <span>Hypervisor</span>
-                    <span>Proxmox VE</span>
-                  </div>
-                  <div class="arch-arrow">↓ KVM / VM</div>
-                  <div class="arch-node">
-                    <span>Base System</span>
-                    <span>Debian Linux</span>
-                  </div>
-                  <div class="arch-arrow">↓ Compose</div>
-                  <div class="arch-node">
-                    <span>Containers & Tunnels</span>
-                    <span>Docker · Cloudflare</span>
+                <div class="project-card-content">
+                  <a href="https://github.com/joaquingonzalezzanotti/ExpenseLog" class="project-github-link" target="_blank" rel="noopener noreferrer" aria-label="Ver ExpenseLog en GitHub"><svg class="github-icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7A5.4 5.4 0 0 0 19.4 4 5 5 0 0 0 19.3.5S18.2.1 15 1.8a13.4 13.4 0 0 0-7 0C4.8.1 3.7.5 3.7.5A5 5 0 0 0 3.6 4a5.4 5.4 0 0 0-1.4 3.5c0 5.4 3.5 6.6 6.8 7A4.8 4.8 0 0 0 8 18v4"></path><path d="M8 19c-3 .9-3-1.5-4-2"></path></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg></a>
+                  <span class="project-card-badge">Proyecto personal</span>
+                  <h3 class="project-card-title">ExpenseLog</h3>
+                  <p class="project-card-desc">Aplicación de finanzas personales que uso para registrar gastos, saldos y actividad mensual. Es también mi laboratorio para backend, integraciones, bots y despliegue.</p>
+                  <div class="project-card-stack">
+                    <span class="chip">Go</span>
+                    <span class="chip">PostgreSQL</span>
+                    <span class="chip">Docker</span>
+                    <span class="chip">JavaScript</span>
+                    <span class="chip">Telegram</span>
+                    <span class="chip">WhatsApp</span>
                   </div>
                 </div>
-              </div>
-              <div class="project-card-content">
-                <span class="project-card-badge">Infraestructura personal</span>
-                <h3 class="project-card-title">Homelab</h3>
-                <p class="project-card-desc">
-                  Laboratorio personal de infraestructura para operar servicios y aprender virtualización, Linux, contenedores, redes, monitoreo y backups. Operación con Cloudflare Tunnel y administración remota estructurada.
-                </p>
-                <div class="project-card-stack">
-                  <span class="chip">Proxmox</span>
-                  <span class="chip">Debian</span>
-                  <span class="chip">Docker</span>
-                  <span class="chip">Docker Compose</span>
-                  <span class="chip">Cloudflare</span>
-                  <span class="chip">Monitoreo</span>
+              </article>
+              <article class="project-card-v2 project-card-linked">
+                <a href="https://residar.com.ar" class="project-card-primary-link" target="_blank" rel="noopener noreferrer" aria-label="Abrir el sitio de ResidAR"></a>
+                <div class="project-card-media">
+                  <img src="/assets/projects/residar/dashboard.webp" alt="Página de ResidAR con una vista de su panel de gestión" loading="lazy" decoding="async" width="800" height="450" />
                 </div>
-              </div>
-            </article>
+                <div class="project-card-content">
+                  <a href="https://github.com/joaquingonzalezzanotti/residAR" class="project-github-link" target="_blank" rel="noopener noreferrer" aria-label="Ver ResidAR en GitHub"><svg class="github-icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7A5.4 5.4 0 0 0 19.4 4 5 5 0 0 0 19.3.5S18.2.1 15 1.8a13.4 13.4 0 0 0-7 0C4.8.1 3.7.5 3.7.5A5 5 0 0 0 3.6 4a5.4 5.4 0 0 0-1.4 3.5c0 5.4 3.5 6.6 6.8 7A4.8 4.8 0 0 0 8 18v4"></path><path d="M8 19c-3 .9-3-1.5-4-2"></path></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg></a>
+                  <span class="project-card-badge">Proyecto Final · UTN</span>
+                  <h3 class="project-card-title">ResidAR</h3>
+                  <p class="project-card-desc">Sistema de gestión para residencias de adultos mayores desarrollado en equipo como Proyecto Final. Trabajo sobre APIs, permisos, datos, testing y documentación técnica.</p>
+                  <div class="project-card-stack">
+                    <span class="chip">NestJS</span>
+                    <span class="chip">Next.js</span>
+                    <span class="chip">TypeScript</span>
+                    <span class="chip">PostgreSQL</span>
+                    <span class="chip">Prisma</span>
+                    <span class="chip">Docker</span>
+                  </div>
+                </div>
+              </article>
+              <article class="project-card-v2 project-card-linked">
+                <a href="https://github.com/joaquingonzalezzanotti" class="project-card-primary-link" target="_blank" rel="noopener noreferrer" aria-label="Explorar mi trabajo de infraestructura en GitHub"></a>
+                <div class="project-card-media project-card-media-center">
+                  <img src="/assets/projects/homelab/cover.webp" alt="Rack de servidores y estación de monitoreo de infraestructura" loading="lazy" decoding="async" width="800" height="450" />
+                </div>
+                <div class="project-card-content">
+                  <a href="https://github.com/joaquingonzalezzanotti" class="project-github-link" target="_blank" rel="noopener noreferrer" aria-label="Abrir mi perfil de GitHub"><svg class="github-icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7A5.4 5.4 0 0 0 19.4 4 5 5 0 0 0 19.3.5S18.2.1 15 1.8a13.4 13.4 0 0 0-7 0C4.8.1 3.7.5 3.7.5A5 5 0 0 0 3.6 4a5.4 5.4 0 0 0-1.4 3.5c0 5.4 3.5 6.6 6.8 7A4.8 4.8 0 0 0 8 18v4"></path><path d="M8 19c-3 .9-3-1.5-4-2"></path></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg></a>
+                  <span class="project-card-badge">Infraestructura personal</span>
+                  <h3 class="project-card-title">Homelab</h3>
+                  <p class="project-card-desc">Infraestructura propia para operar servicios, experimentar y aprender con virtualización, Linux, contenedores, redes, monitoreo, backups y acceso remoto seguro.</p>
+                  <div class="project-card-stack">
+                    <span class="chip">Proxmox</span>
+                    <span class="chip">Debian</span>
+                    <span class="chip">Docker</span>
+                    <span class="chip">Cloudflare</span>
+                    <span class="chip">Monitoring</span>
+                  </div>
+                </div>
+              </article>
+              <article class="project-card-v2 project-card-linked">
+                <a href="https://github.com/joaquingonzalezzanotti" class="project-card-primary-link" target="_blank" rel="noopener noreferrer" aria-label="Explorar mis automatizaciones en GitHub"></a>
+                <div class="project-card-media project-card-media-center">
+                  <img src="/assets/projects/home-assistant/cover.webp" alt="Panel de Home Assistant con dispositivos, luces y estados del hogar" loading="lazy" decoding="async" width="800" height="450" />
+                </div>
+                <div class="project-card-content">
+                  <a href="https://github.com/joaquingonzalezzanotti" class="project-github-link" target="_blank" rel="noopener noreferrer" aria-label="Abrir mi perfil de GitHub"><svg class="github-icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7A5.4 5.4 0 0 0 19.4 4 5 5 0 0 0 19.3.5S18.2.1 15 1.8a13.4 13.4 0 0 0-7 0C4.8.1 3.7.5 3.7.5A5 5 0 0 0 3.6 4a5.4 5.4 0 0 0-1.4 3.5c0 5.4 3.5 6.6 6.8 7A4.8 4.8 0 0 0 8 18v4"></path><path d="M8 19c-3 .9-3-1.5-4-2"></path></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg></a>
+                  <span class="project-card-badge">Domótica local</span>
+                  <h3 class="project-card-title">Home Assistant &amp; IoT</h3>
+                  <p class="project-card-desc">Sistema domótico centralizado con sensores, escenas e integraciones locales. Automatiza iluminación, seguridad y rutinas según presencia, horarios y estado del hogar.</p>
+                  <div class="project-card-stack">
+                    <span class="chip">Home Assistant</span>
+                    <span class="chip">YAML</span>
+                    <span class="chip">MQTT</span>
+                    <span class="chip">ESPHome</span>
+                    <span class="chip">Zigbee</span>
+                    <span class="chip">Docker</span>
+                  </div>
+                </div>
+              </article>
+              <article class="project-card-v2 project-card-linked">
+                <a href="https://sorty-neon.vercel.app" class="project-card-primary-link" target="_blank" rel="noopener noreferrer" aria-label="Abrir la aplicación Sorty"></a>
+                <div class="project-card-media">
+                  <img src="/assets/projects/sorty/cover.png" alt="Interfaz de Sorty para configurar participantes y exclusiones" loading="lazy" decoding="async" width="800" height="450" />
+                </div>
+                <div class="project-card-content">
+                  <a href="https://github.com/joaquingonzalezzanotti" class="project-github-link" target="_blank" rel="noopener noreferrer" aria-label="Abrir mi perfil de GitHub"><svg class="github-icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7A5.4 5.4 0 0 0 19.4 4 5 5 0 0 0 19.3.5S18.2.1 15 1.8a13.4 13.4 0 0 0-7 0C4.8.1 3.7.5 3.7.5A5 5 0 0 0 3.6 4a5.4 5.4 0 0 0-1.4 3.5c0 5.4 3.5 6.6 6.8 7A4.8 4.8 0 0 0 8 18v4"></path><path d="M8 19c-3 .9-3-1.5-4-2"></path></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg></a>
+                  <span class="project-card-badge">Aplicación web</span>
+                  <h3 class="project-card-title">Sorty</h3>
+                  <p class="project-card-desc">Aplicación para organizar Amigo Invisible con reglas de exclusión, validaciones y un flujo simple para cargar participantes y compartir cada resultado de forma privada.</p>
+                  <div class="project-card-stack">
+                    <span class="chip">JavaScript</span>
+                    <span class="chip">Python</span>
+                    <span class="chip">PostgreSQL</span>
+                    <span class="chip">Vercel</span>
+                  </div>
+                </div>
+              </article>
+              <article class="project-card-v2 project-card-linked">
+                <a href="https://github.com/joaquingonzalezzanotti" class="project-card-primary-link" target="_blank" rel="noopener noreferrer" aria-label="Explorar mi trabajo de automatización en GitHub"></a>
+                <div class="project-card-media project-card-media-center">
+                  <img src="/assets/projects/automation-systems/cover.webp" alt="Panel conceptual de automatización con pipeline, agentes y bot de Telegram" loading="lazy" decoding="async" width="800" height="450" />
+                </div>
+                <div class="project-card-content">
+                  <a href="https://github.com/joaquingonzalezzanotti" class="project-github-link" target="_blank" rel="noopener noreferrer" aria-label="Abrir mi perfil de GitHub"><svg class="github-icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7A5.4 5.4 0 0 0 19.4 4 5 5 0 0 0 19.3.5S18.2.1 15 1.8a13.4 13.4 0 0 0-7 0C4.8.1 3.7.5 3.7.5A5 5 0 0 0 3.6 4a5.4 5.4 0 0 0-1.4 3.5c0 5.4 3.5 6.6 6.8 7A4.8 4.8 0 0 0 8 18v4"></path><path d="M8 19c-3 .9-3-1.5-4-2"></path></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg></a>
+                  <span class="project-card-badge">Capacidad transversal</span>
+                  <h3 class="project-card-title">Automatización y entrega</h3>
+                  <p class="project-card-desc">Flujos que conectan eventos, pruebas, despliegues y operación: pipelines, agentes, tareas programadas, webhooks y bots de Telegram para reducir trabajo manual.</p>
+                  <div class="project-card-stack">
+                    <span class="chip">CI/CD</span>
+                    <span class="chip">Docker</span>
+                    <span class="chip">Agents</span>
+                    <span class="chip">Telegram</span>
+                    <span class="chip">Webhooks</span>
+                    <span class="chip">Automation</span>
+                  </div>
+                </div>
+              </article>
+            </div>
           </div>
         </div>
       </section>
+      <!-- PROJECTS:END -->
 
       <!-- STACK:START -->
       <section id="stack" class="section stack-section">
