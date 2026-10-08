@@ -301,8 +301,8 @@ p {
 
 /* Hero Section */
 .hero {
-  padding-top: 5rem;
-  padding-bottom: 3.5rem;
+  padding-top: 3rem;
+  padding-bottom: 2.5rem;
 }
 
 .hero-meta {
@@ -315,7 +315,7 @@ p {
 }
 
 .hero-title {
-  font-size: 2.85rem;
+  font-size: clamp(2.35rem, 5.5vw, 4.25rem);
   font-weight: 800;
   letter-spacing: -0.035em;
   line-height: 1.15;
@@ -345,11 +345,21 @@ p {
   gap: 0.5rem;
   font-size: 0.9rem;
   color: var(--color-text-muted);
-  margin-bottom: 2rem;
+  margin-bottom: 0.75rem;
 }
 
 .hero-context-separator {
   color: var(--color-text-light);
+}
+
+.hero-language {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.75rem;
 }
 
 .hero-actions {
@@ -826,10 +836,6 @@ p {
 }
 
 @media (max-width: 768px) {
-  .hero-title {
-    font-size: 2.25rem;
-  }
-
   .hero-subheadline {
     font-size: 1.1rem;
   }
