@@ -63,12 +63,15 @@
         event.preventDefault();
         const targetLang = btn.getAttribute("data-lang-switch");
         setSavedLanguage(targetLang);
-        const hash = window.location.hash || "";
-        if (targetLang === "en") {
-          window.location.href = "/en/" + hash;
-        } else {
-          window.location.href = "/" + hash;
+        const targetPath = targetLang === "en" ? "/en/" : "/";
+
+        if (window.location.pathname === targetPath && !window.location.search) {
+          window.history.replaceState(null, "", targetPath);
+          window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+          return;
         }
+
+        window.location.assign(targetPath);
       });
     });
   });
