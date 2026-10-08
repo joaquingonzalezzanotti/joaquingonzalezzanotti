@@ -128,7 +128,7 @@
         "es": "Sistema domótico centralizado con sensores, escenas e integraciones locales. Automatiza iluminación, seguridad y rutinas según presencia, horarios y estado del hogar.",
         "en": "A centralized home automation system with sensors, scenes, and local integrations. It automates lighting, security, and routines based on presence, schedules, and home state."
       },
-      "image": "/assets/projects/home-assistant/cover.webp",
+      "image": "/assets/projects/home-assistant/homeassistant-photo.png",
       "imagePosition": "center",
       "alt": {
         "es": "Panel de Home Assistant con dispositivos, luces y estados del hogar",

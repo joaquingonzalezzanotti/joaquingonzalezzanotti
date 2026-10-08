@@ -401,8 +401,8 @@ p {
 
 .profile-detail-row {
   display: grid;
-  grid-template-columns: 86px 1fr;
-  gap: 0.75rem;
+  grid-template-columns: minmax(7.25rem, max-content) minmax(0, 1fr);
+  gap: 1rem;
   padding: 0.72rem 0;
   border-bottom: 1px solid var(--color-border-subtle);
 }
@@ -1197,6 +1197,11 @@ p {
 @media (max-width: 560px) {
   .nav-brand-name {
     display: none;
+  }
+
+  .profile-detail-row {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
   }
 
   .stack-stage {
