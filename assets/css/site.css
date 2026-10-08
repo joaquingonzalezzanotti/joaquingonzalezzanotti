@@ -547,11 +547,17 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top;
+  object-position: top left;
   display: block;
 }
 
-/* Minimal architectural representation for ResidAR & Homelab */
+.project-card-media > a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Minimal architectural representation for Homelab */
 .preview-architectural {
   width: 100%;
   height: 100%;
