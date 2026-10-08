@@ -114,6 +114,7 @@
       const stackFilters = stackStage.querySelectorAll("[data-stack-filter]");
       const stackNodes = stackStage.querySelectorAll(".stack-node");
       const stackLayers = stackStage.querySelectorAll(".stack-layer");
+      const stackMap = stackStage.querySelector(".stack-map");
       const stackSummary = stackStage.querySelector("[data-stack-summary]");
       const defaultSummary = stackSummary ? stackSummary.getAttribute("data-default-summary") : "";
       let lockedFilter = null;
@@ -148,6 +149,23 @@
         showContext(lockedFilter);
       }
 
+      function revealContextOnMobile(filter) {
+        if (!filter || !stackMap || !window.matchMedia("(max-width: 768px)").matches) return;
+
+        const context = filter.getAttribute("data-stack-filter");
+        const matchingLayer = Array.from(stackLayers).find(function (layer) {
+          return containsContext(layer, context);
+        });
+
+        if (!matchingLayer) return;
+
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        stackMap.scrollTo({
+          left: matchingLayer.offsetLeft - stackMap.offsetLeft,
+          behavior: reducedMotion ? "auto" : "smooth",
+        });
+      }
+
       stackFilters.forEach(function (filter) {
         filter.addEventListener("mouseenter", function () {
           if (!lockedFilter) showContext(filter);
@@ -174,6 +192,7 @@
           });
 
           restoreLockedContext();
+          if (lockedFilter) revealContextOnMobile(lockedFilter);
         });
       });
 
