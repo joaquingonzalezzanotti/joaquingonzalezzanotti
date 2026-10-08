@@ -378,27 +378,10 @@ p {
   box-shadow: var(--shadow-card);
 }
 
-.profile-intro {
-  display: grid;
-  grid-template-columns: 5.25rem minmax(0, 1fr);
-  align-items: start;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.profile-photo {
-  display: block;
-  width: 5.25rem;
-  height: 5.25rem;
-  object-fit: cover;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-}
-
 .profile-summary {
   font-size: 0.86rem;
   line-height: 1.5;
-  margin-bottom: 0;
+  margin-bottom: 1rem;
 }
 
 .profile-details {
@@ -1170,6 +1153,37 @@ p {
   font-size: 0.92rem;
 }
 
+.contact-dialog-email {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-subtle);
+}
+
+.contact-dialog-email > div {
+  display: grid;
+  gap: 0.12rem;
+  min-width: 0;
+}
+
+.contact-dialog-email > div > span {
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.contact-dialog-email strong {
+  overflow-wrap: anywhere;
+  font-size: 0.88rem;
+}
+
 .contact-dialog-close {
   display: inline-flex;
   align-items: center;
@@ -1416,16 +1430,6 @@ body.modal-open {
   .profile-detail-row {
     grid-template-columns: 1fr;
     gap: 0.2rem;
-  }
-
-  .profile-intro {
-    grid-template-columns: 4.25rem minmax(0, 1fr);
-    gap: 0.85rem;
-  }
-
-  .profile-photo {
-    width: 4.25rem;
-    height: 4.25rem;
   }
 
   .currently-role-title-inline {
